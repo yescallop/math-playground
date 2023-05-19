@@ -11,7 +11,7 @@
 \maketitle
 
 \begin{proposition}
-    Let $f$ be a continuous function with period $T$, and let $x_0$ be a point.
+    Let $f:\mathbb{R}\to\mathbb{R}$ be a continuous function with period $T$, and let $x_0\in\mathbb{R}$.
     If $f(x_0)\neq0$ and $\int_{0}^{T}f(x)dx=0$, then $f$ has
     at least two zeros in the interval $I=(x_0,x_0+T)$.
 \end{proposition}
@@ -23,24 +23,23 @@
         \int_{x_0}^{x_0+T}f(x)dx & =\int_{0}^{T}f(x)dx=0.
     \end{align*}
     Without loss of generality we may assume that $f(x_0+T)=f(x_0)>0$.
-    By the mean value theorem for definite integrals, there exists $c\in I$ such that
+    By the mean value theorem for definite integrals, there exists a $c\in I$ such that
     \[f(c)=\frac{1}{T}\int_{x_0}^{x_0+T}f(x)dx=0.\]
     Hence $f$ has at least one zero in $I$. Suppose for sake of contradiction that
-    $f$ has only one zero in $I$. Again, suppose for sake of contradiction that
-    there exists $m\in I$ such that $f(m)<0$. So by the intermediate value theorem
-    $f$ has an extra zero in $(x_0,m)$ or $(m,x_0+T)$, a contradiction. Thus we have
-    \[f(x)\ge0\quad\forall x\in I,\]
-    and as $f$ has only one zero in $I$
-    \[f(x)>0 \quad\forall x\in I-\{c\}.\]
-    By the mean value theorem for definite integrals, there exists $x_1\in(x_0,c)$ and
-    $x_2\in(c,x_0+T)$ such that
+    $f$ has only one zero in $I$. Again, suppose that
+    there exists a $b\in I$ such that $f(b)<0$. By the intermediate value theorem
+    $f$ has an extra zero in $(x_0,b)$ or $(b,x_0+T)$, a contradiction. Thus we have
+    \[f(x)\ge0\quad\forall x\in I.\]
+    Since $f$ is continuous, there exists an $a\in I$ such that
+    \[f(x)\ge\frac{f(x_0)}{2}\quad\forall x\in(x_0,a).\]
+    By the properties of the Riemann integral
     \begin{align*}
-        0<f(x_1) & =\frac{1}{c-x_0}\int_{x_0}^{c}f(x)dx,     \\
-        0<f(x_2) & =\frac{1}{x_0+T-c}\int_{c}^{x_0+T}f(x)dx.
+        \int_{x_0}^{a}f(x)dx\ge\int_{x_0}^{a}\frac{f(x_0)}{2}dx=\frac{a-x_0}{2}f(x_0)>0,\\
+        \int_{a}^{x_0+T}f(x)dx\ge0,\\
+        \int_{x_0}^{x_0+T}f(x)dx=\int_{x_0}^{a}f(x)dx+\int_{a}^{x_0+T}f(x)dx>0.
     \end{align*}
-    Then we have
-    \[\int_{x_0}^{x_0+T}f(x)dx=\int_{x_0}^{c}f(x)dx+\int_{c}^{x_0+T}f(x)dx>0,\]
-    contradicting the fact that $\int_{x_0}^{x_0+T}f(x)dx=0$. This contradiction gives the proof.
+    This contradicts the fact that $\int_{x_0}^{x_0+T}f(x)dx=0$.
+    Thus $f$ has at least two zeros in $I$, as desired.
 \end{proof}
 
 \end{document}
