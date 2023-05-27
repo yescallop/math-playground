@@ -27,18 +27,40 @@
     \[f(c)=\frac{1}{T}\int_{x_0}^{x_0+T}f(x)dx=0.\]
     Hence $f$ has at least one zero in $I$. Suppose for sake of contradiction that
     $f$ has only one zero in $I$. Again, suppose that
-    $f(x)<0$ for some $x\in I$. But by the intermediate value theorem
+    $f(x)<0$ for some $x\in I$. But then by the intermediate value theorem
     $f$ has an extra zero in $(x_0,x)$ or $(x,x_0+T)$, a contradiction. Thus we have $f(x)\ge0$ for all $x\in I$.
     Since $f$ is continuous, there exists an $a\in I$ such that
     \[f(x)\ge\frac{f(x_0)}{2}\quad\forall x\in(x_0,a).\]
     By the properties of the Riemann integral
     \begin{align*}
-        \int_{x_0}^{a}f(x)dx\ge\int_{x_0}^{a}\frac{f(x_0)}{2}dx=\frac{a-x_0}{2}f(x_0)>0,\\
-        \int_{a}^{x_0+T}f(x)dx\ge0,\\
+        \int_{x_0}^{a}f(x)dx\ge\int_{x_0}^{a}\frac{f(x_0)}{2}dx=\frac{a-x_0}{2}f(x_0)>0, \\
+        \int_{a}^{x_0+T}f(x)dx\ge0,                                                      \\
         \int_{x_0}^{x_0+T}f(x)dx=\int_{x_0}^{a}f(x)dx+\int_{a}^{x_0+T}f(x)dx>0.
     \end{align*}
     This contradicts the fact that $\int_{x_0}^{x_0+T}f(x)dx=0$.
     Thus $f$ has at least two zeros in $I$, as desired.
+\end{proof}
+
+\begin{proposition}
+    Let $f:(a,b)\to\mathbb{R}$ be a continuous function. Suppose that there exists a unique
+    $x_0\in(a,b)$ such that $f$ attains a local maximum at $x_0$, and that $f$ does not
+    attain a local minimum anywhere. Then $f$ also attains
+    a global maximum at $x_0$.
+\end{proposition}
+
+\begin{proof}
+    Suppose for sake of contradiction that $f(x_1)>f(x_0)$ for some $x_1\in(a,b)$.
+    Without loss of generality we may assume that $x_1>x_0$. Since
+    $f$ attains a local maximum at $x_0$, there exists a $c\in(x_0,x_1)$ such that
+    $f(x)\le f(x_0)$ for all $x\in(x_0,c)$. Suppose that $f(x)=f(x_0)$ for some $x\in(x_0,c)$.
+    But then $f$ attains a local maximum at $x$, a contradiction. Hence
+    $f(x)<f(x_0)$ for all $x\in(x_0,c)$.
+
+    Now let $c'\in(x_0,c)$ and obtain $f(c')<f(x_0)$. Since $f$ is continuous,
+    there exists a $c''\in[x_0,x_1]$ such that $f(x)\ge f(c'')$ for all $x\in[x_0,x_1]$,
+    by the maximum principle. Thus we have $f(c'')\le f(c')<f(x_0)<f(x_1)$ and that
+    $c''\in(x_0,x_1)$. But then $f$ attains a local minimum at $c''$, a contradiction.
+    Thus $f(x)\le f(x_0)$ for all $x\in(a,b)$, as desired.
 \end{proof}
 
 \end{document}
