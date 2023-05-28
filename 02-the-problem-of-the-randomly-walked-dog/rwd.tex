@@ -1,0 +1,151 @@
+\documentclass{amsart}
+\usepackage{amsmath,amssymb,amsthm,framed}
+
+\DeclareMathOperator{\walk}{walk}
+\DeclareMathOperator{\simp}{simp}
+
+\newcommand{\olsi}[1]{\,\overline{\!{#1}}} % overline short italic
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{conjecture}[proposition]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
+
+\newtheoremstyle{problem}{}{}{}{}
+{\bfseries}{} % Note that final punctuation is omitted.
+{\newline}{}
+
+\theoremstyle{problem}
+\newtheorem{problem}[proposition]{Problem}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\title{The Problem of the Randomly Walked Dog}
+\author{Scallop Ye}
+
+\begin{document}
+
+\begin{abstract}
+    In 1905, Karl Pearson \cite{pearson} proposed on \emph{Nature} the
+    famous problem of the random walk. In this article, we present a new
+    combinatorial optimization problem in the spirit of Pearson's problem.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+A man walks the dog every day. The dog will prepare $n$ cards beforehand.
+Each card contains a positive distance and a direction that is neither identical
+nor opposite to that on another card. Once the cards are ready, the walk begins.
+
+They start from a point $O$ and repeat the following process $n$ times:
+
+\begin{enumerate}
+    \item choose a card randomly;
+    \item turn to the direction given on the card;
+    \item walk the distance given on the card in a straight line;
+    \item throw the card away.
+\end{enumerate}
+
+After these $n$ rounds, the walk ends and the dog wins a treat if they visited
+any point \emph{twice or more} in the walk, except if the \emph{only} point
+they visited twice or more is $O$ and it was \emph{only} visited once at the
+beginning and once at the end of the walk.
+
+Now, the dog asks for your help in maximizing the probability of winning the
+treat in a walk. The man is known to sometimes restrict the value of $n$ and
+sometimes not. Note that too much calculation exhausts the dog.
+
+\begin{remark}
+    As one might have seen, this problem differs from Pearson’s one in that
+    it is not inherently probabilistic. We will be using permutations
+    instead to formally define the problem in the next section.
+\end{remark}
+
+\section{Definitions}
+
+Let us take a look at the cards first. The cards the dog prepares should represent
+a sequence of noncollinear vectors in $\mathbb{R}^2$, or in $\mathbb{Z}^2$
+without loss of generality. We may call these vectors \emph{steps} and define
+
+\begin{definition}
+    An \emph{$n$-step sequence} $S$, or generally a step sequence,
+    is a finite sequence $(s_1,s_2,\dots,s_n)$
+    of noncollinear vectors in $\mathbb{Z}^2$.
+\end{definition}
+
+Then in order to study the points the pair visits in a walk, we shall introduce
+polygonal paths:
+
+\begin{definition}
+    A \emph{polygonal path} $P$ is a finite sequence $(p_1,p_2,\dots,p_n)$
+    of points called its \emph{vertices}; the line segments
+    $\overline{p_1p_2},\overline{p_2p_3},\dots,\overline{p_{n-1}p_n}$
+    are called its \emph{edges}.
+\end{definition}
+
+The winning conditions for the dog naturally translate to whether the polygonal
+path formed in a walk does not ``intersect itself'', or in other words whether
+the path is simple.
+
+\begin{definition}
+    A polygonal path $(p_1,p_2,\dots,p_n)$ is \emph{simple}
+    iff for all $1<i\le j<n$,
+    \[
+        \overline{p_{i-1}p_i}\cap\overline{p_jp_{j+1}}=
+        \begin{cases}
+            \{p_i\}            & \text{if $i=j$},                     \\
+            \{p_1\}\cap\{p_n\} & \text{if $n>3$ and $(i,j)=(2,n-1)$}, \\
+            \varnothing        & \text{otherwise}.
+        \end{cases}
+    \]
+\end{definition}
+
+Note that a simple polygonal path can be $closed$, as specially dealt with
+in the second case above. We also want the same to be the case for our problem,
+because if it were not the dog would be so bored as all it has to do is close the path!
+
+Then, we would like to form a polygonal path by \emph{walking} the steps:
+
+\begin{definition}
+    Let $S=(s_1,s_2,\dots,s_n)$ be a step sequence. The \emph{walk} of $S$, denoted
+    $\walk(S)$, is the polygonal path $(p_0,p_1,\dots,p_n)$
+    where $p_0=(0,0)$ and $p_i=p_{i-1}+s_i$ for all $1\le i\le n$.
+\end{definition}
+
+Finally, we define the value we are optimizing and then the problem:
+
+\begin{definition}
+    Let $S$ be a step sequence. The \emph{simplicity} of $S$,
+    denoted $\simp(S)$, is the number of permutations $S'$ of $S$
+    such that $\walk(S')$ is simple.
+\end{definition}
+
+\begin{problem}[\textsc{The Problem of the Randomly Walked Dog}]
+\begin{framed}
+    \begin{tabular}{@{}ll}
+        \textit{Instance:} &
+        A natural number $n\ge2$. \\
+
+        \textit{Task:}     &
+        Find an $n$-step sequence of minimum simplicity.
+    \end{tabular}
+    \vskip -2pt
+\end{framed}
+\end{problem}
+
+\begin{thebibliography}{9}
+
+    \bibitem{pearson}
+    Pearson, K.
+    The Problem of the Random Walk.
+    \emph{Nature}
+    \textbf{72},
+    294 (1905).
+
+\end{thebibliography}
+
+\end{document}
