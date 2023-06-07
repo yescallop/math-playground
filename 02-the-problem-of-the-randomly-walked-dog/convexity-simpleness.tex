@@ -1,0 +1,214 @@
+\documentclass{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xeCJK}
+\setCJKmainfont{SimHei}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{theorem}[proposition]{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
+
+\title{When is a Convex Closed Curve not Simple?}
+\author{Scallop Ye}
+
+\begin{document}
+
+\begin{abstract}
+    In this article, we provide analytical definitions of closed curves
+    and of simpleness and convexity of closed curves. We will show
+    that a convex closed curve is simple if and only if
+    it does not lie entirely on a line.
+\end{abstract}
+
+\maketitle
+
+\section{Definitions}
+
+We first follow Milnor \cite{milnor} to define the concepts in a more rigorous manner.
+
+\begin{definition}[Closed curves]
+    A \emph{closed curve} in Euclidean $n$-space $\mathbb{E}^n$ is a
+    continuous, periodic function $\gamma:\mathbb{R}\to\mathbb{R}^n$
+    which is not constant in any interval.
+\end{definition}
+
+One can show that a closed curve has a least positive period.
+For convenience we redefine the notion of period as follows.
+
+\begin{definition}[Periods]
+    Let $\gamma$ be a closed curve of least positive period $p$,
+    and let $x\in\mathbb{R}$. We call $p$ \emph{the period} of $\gamma$,
+    and the interval $P=[x,x+p)$ \emph{a period} of $\gamma$.
+    We say that a closed curve $\gamma'$ is \emph{of period} $p'$
+    iff the period of $\gamma'$ is $p'$.
+\end{definition}
+
+Here we restricted periods to be right-open, since every
+definition in this article that relies on right-open periods can be
+proved equivalent to a left-open version.
+
+\begin{definition}[Simpleness]
+    Let $\gamma$ be a closed curve of period $p$.
+    We say that $\gamma$ is \emph{simple}
+    iff for all $t_1,t_2\in\mathbb{R}$, $\gamma(t_1)=\gamma(t_2)$
+    only when $(t_1-t_2)/p$ is an integer.
+\end{definition}
+
+\begin{definition}[Convexity]
+    Let $\gamma$ be a closed curve in $\mathbb{E}^2$.
+    We say that $\gamma$ is \emph{convex} iff
+    for every line $L\subset\mathbb{R}^2$,
+    there exists a period $P$ of $\gamma$ such that
+    the set $\{t\in P:\gamma(t)\in L\}$ either
+    has cardinality $\le2$ or is a nontrivial interval.
+\end{definition}
+
+\begin{proposition}
+    A closed curve $\gamma$ in $\mathbb{E}^2$ is convex iff
+    for every $u\in\mathbb{S}^1$ and $y\in\mathbb{R}$,
+    there exists a period $P$ of $\gamma$ such that
+    the set $\{t\in P:u\cdot\gamma(t)=y\}$ either
+    has cardinality $\le2$ or is a nontrivial interval.
+\end{proposition}
+
+\begin{proof}
+    It is clear that every line $L\subset\mathbb{R}^2$
+    can be specified by a normal vector $u\in\mathbb{S}^1$
+    and a distance $y\in\mathbb{R}$ from the origin such that
+    $L=\{x\in\mathbb{R}^2:u\cdot x=y\}$.
+\end{proof}
+
+\begin{definition}
+    Let $\gamma$ be a closed curve in $\mathbb{E}^n$,
+    let $u\in\mathbb{S}^{n-1}$,
+    and let $P$ be any period of $\gamma$.
+    Define $\mu(\gamma,u)$ to be the cardinality of the set
+    $\{t\in P:\text{the function }u\cdot\gamma\text{ attains a local maximum at }t\}$
+    if it is finite, or $\infty$ otherwise.
+\end{definition}
+
+The $\mu(\gamma,u)$ defined above is clearly unique as with
+many other properties of a periodic function over a period.
+We then prove a generalization of the necessity part
+of \cite[Lemma 3.3]{milnor} in the hope that
+our definitions are equivalent to Milnor's.
+
+\begin{proposition}
+    Let $\gamma$ be a closed curve in $\mathbb{E}^2$.
+    If $\gamma$ is convex, then for every $u\in\mathbb{S}^1$
+    either $\mu(\gamma,u)=1$ or $\mu(\gamma,u)=\infty$.
+\end{proposition}
+
+\begin{proof}
+    Suppose that $2\le\mu(\gamma,u)<\infty$ for some $u\in\mathbb{S}^1$.
+    Let $f:\mathbb{R}\to\mathbb{R}$ be the function $u\cdot\gamma$,
+    let $P=[x,x+p)$ be any period of $\gamma$, and let $t_1<t_2\in P$
+    such that $f$ attains local maxima at $t_1$ and $t_2$.
+    Suppose that $f(t_1)\ge f(t_2)$.
+    Since $f$ attains a finite number of local maxima in $P$,
+    there exists $a,b,y$ with $t_1<a<t_2<b<x+p$ such that
+    $f(a),f(b)<y<f(t_2)\le f(t_1)$.
+    By the intermediate value theorem there exists
+    $c_1\in(t_1,a)$, $c_2\in(a,t_2)$, and $c_3\in(t_2,b)$ such that
+    $f(c_i)=y$ for $i=1,2,3$. Since $f(t_2)\ne y$, we know that
+    the set $\{t\in P:u\cdot\gamma(t)=y\}$ is not an interval,
+    and if it is finite, has cardinality $>2$; this is a contradiction
+    to convexity. Now suppose that $f(t_1)<f(t_2)$.
+    If $t_1\ne x$ then the proof is identical,
+    so we assume that $t_1=x$. It is always possible to find
+    a $\delta>0$ such that $x-\delta<t_1<t_2<x+p-\delta$.
+    Similarly, there exists $c_1\in(x-\delta,t_1)$ and
+    $c_2<c_3\in(t_1,t_2)$ such that $f(c_i)=y$ for $i=1,2,3$.
+    Let $c_4=c_1+p\in(t_2,x+p)$ and obtain $f(c_4)=y$.
+    Since $f(t_2)\ne y$ we again have a contradiction.
+\end{proof}
+
+The sufficiency part of the lemma seems way more tricky to prove
+analytically, especially the case when $\mu(\gamma,u)=\infty$.
+Milnor's proof, on the other hand, made too much use of
+geometrical methods despite his analytical definitions.
+It is not entirely clear, for example, why it is always possible
+to rotate a line about one of its points of intersection with
+a polygon so that the number of intersections is not decreased.
+Also, we have this particular case when a polygon in the shape of 凸
+(lit. convex; however the shape itself is concave)
+is intersected by a horizontal line: the set of points of intersection
+either has cardinality 2 or is infinite, but when it is infinite
+the set may still be unconnected. This case is not seen to
+be handled in Milnor's proof and does not seem trivial otherwise.
+I think, however, that the lemma is true but it still needs
+an analytical proof for the sake of completeness.
+
+\section{Proof}
+
+Now that we have sanity-checked the equivalency of definitions,
+we shall first present a lemma and then our main theorem.
+
+\begin{lemma}
+    \label{lem}
+    Let $f:(a,b)\cup(b,c)\to\mathbb{R}^2$ be a continuous function
+    which is not constant, and let $p\in\mathbb{R}^2$.
+    Suppose that there exists $x_1,x_2\in(a,b)\cup(b,c)$ such that
+    the points $p,f(x_1),f(x_2)$ are noncollinear.
+    Then there exists $x_1'\in(a,b),x_2'\in(b,c)$ such that
+    the points $p,f(x_1'),f(x_2')$ are noncollinear.
+\end{lemma}
+
+\begin{proof}
+    Suppose that for all $x_1'\in(a,b)$ and $x_2'\in(b,c)$,
+    the points $p,f(x_1'),f(x_2')$ are collinear.
+    Then we have $x_1,x_2\in A$ where
+    $A$ is either $(a,b)$ or $(b,c)$. Let $B$ be the other interval.
+    Since $f$ is not constant, there exists $x_0\in B$
+    such that $f(x_0)\ne p$. But $f(x_0)$ cannot be collinear
+    with $p,f(x_1)$ and with $p,f(x_2)$ at the same time.
+\end{proof}
+
+\begin{theorem}
+    A convex closed curve is simple iff
+    it does not lie entirely on a line.
+\end{theorem}
+
+\begin{proof}
+    \newcommand{\gb}{\bar{\gamma}}
+    Suppose that $\gamma$ is a simple closed curve in $\mathbb{E}^2$
+    which lies entirely on a line. Then there exists a simple closed
+    curve $\gb$ in $\mathbb{E}^1$.
+    Let $P=[x,x+p)$ be any period of $\gb$. Since $\gb$ is not constant,
+    there exists $t\in(x,x+p)$ such that $\gb(t)\ne\gb(x)=\gb(x+p)$.
+    By the intermediate value theorem there exists $c_1\in(x,t),
+        c_2\in(t,x+p)$ such that $\gb(c_1)=\gb(c_2)=y$ for some
+    $y$ between $\gb(t)$ and $\gb(x)$. But then $0<(c_2-c_1)/p<1$,
+    a contradiction to simpleness.
+
+    Now suppose that $\gamma$ is a convex closed curve in $\mathbb{E}^2$
+    which is not simple and does not lie entirely on a line.
+    Let $X=[x_1,x_1+p)$ be a period of $\gamma$ such that
+    $\gamma(x_1)=\gamma(x_1')$ for some $x_1'\in(x_1,x_1+p)$.
+    Then there exists $x_2,x_3\in(x_1,x_1')\cup(x_1',x_1+p)$
+    such that the points $\gamma(x_1),\gamma(x_2),\gamma(x_3)$ are
+    noncollinear. By Lemma \ref{lem} we may assume that
+    $x_2\in(x_1,x_1')$ and $x_3\in(x_1',x_1+p)$.
+    Now let $P$ be any period of $\gamma$. Then there exists
+    $c_1,c_1',c_2,c_3\in P$ such that $c_1<c_3<c_1'$,
+    that $\gamma(c_1)=\gamma(c_1')$, and that the points
+    $p_1=\gamma(c_1),p_2=\gamma(c_2),p_3=\gamma(c_3)$ are noncollinear.
+    Let $u\in\mathbb{S}^1$ be a vector perpendicular to
+    $\overline{p_1p_2}$. Then we have
+    $u\cdot\gamma(c_1)=u\cdot\gamma(c_1')=u\cdot\gamma(c_2)
+        \ne u\cdot\gamma(c_3)$, a contradiction to convexity.
+\end{proof}
+
+\begin{thebibliography}{9}
+
+    \bibitem{milnor}
+    J. W. Milnor,
+    \emph{On the Total Curvature of Knots},
+    Ann. of Math.
+    \textbf{52} (1950), no. 2, 248-257.
+
+\end{thebibliography}
+
+\end{document}

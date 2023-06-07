@@ -173,9 +173,9 @@ implies that it is always possible for the dog to win.
     then $S'$ would again not be zero-sum. So we have $\alpha_i=\theta_{i+1}-\theta_i$
     for all $1\le i<n$ and that $\sum_{i=1}^n\alpha_i=2\pi$.
     Let $P$ be the walk of $S'$, a polygon of total absolute curvature $2\pi$.
-    By Fenchel's theorem (generalized to any closed curve by Milner
-    \cite[Theorem 3.4]{milner}), we know that $P$ is convex.
-    A convex polygon whose edges are not all collinear is simple (why?).
+    By Fenchel's theorem (generalized to any closed curve by Milnor
+    \cite[Theorem 3.4]{milnor}), we know that $P$ is convex.
+    A convex polygon that does not lie entirely on a line is simple \cite{ye}.
 \end{proof}
 
 By computer simulation on Problem \ref{prob:rwd}, we observe that the maximum
@@ -183,7 +183,7 @@ simplicity on record follows a very simple formula, hence the following conjectu
 
 \begin{conjecture}
     \label{conj:value_formula}
-    The maximum simplicity of a zero-sum $n$-step sequence 
+    The maximum simplicity of a zero-sum $n$-step sequence
     is exactly $2\cdot n!/(n-1)$.
 \end{conjecture}
 
@@ -191,14 +191,19 @@ simplicity on record follows a very simple formula, hence the following conjectu
 
     \bibitem{pearson}
     K. Pearson,
-    \emph{The Problem of the Random Walk}.
+    \emph{The Problem of the Random Walk},
     Nature \textbf{72} (1905), 294.
 
-    \bibitem{milner}
+    \bibitem{milnor}
     J. W. Milnor,
-    \emph{On the Total Curvature of Knots}.
+    \emph{On the Total Curvature of Knots},
     Ann. of Math.
     \textbf{52} (1950), no. 2, 248-257.
+
+    \bibitem{ye}
+    S. Ye,
+    \emph{When is a Convex Closed Curve not Simple?},
+    preprint.
 
 \end{thebibliography}
 
