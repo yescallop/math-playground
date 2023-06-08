@@ -10,16 +10,16 @@
 \theoremstyle{definition}
 \newtheorem{definition}[proposition]{Definition}
 
-\title{When is a Convex Closed Curve not Simple?}
+\title{When Is a Convex Closed Curve Not Simple?}
 \author{Scallop Ye}
 
 \begin{document}
 
 \begin{abstract}
-    In this article, we provide analytical definitions of closed curves
-    and of simpleness and convexity of closed curves. We will show
-    that a convex closed curve is simple if and only if
-    it does not lie entirely on a line.
+    A convex curve is, informally, a plane curve whose intersection with a
+    line is either a set of at most two points or a line segment.
+    With analytical definitions we show that a convex closed curve is simple
+    if and only if it does not lie entirely on a line.
 \end{abstract}
 
 \maketitle
@@ -44,10 +44,6 @@ For convenience we redefine the notion of period as follows.
     We say that a closed curve $\gamma'$ is \emph{of period} $p'$
     iff the period of $\gamma'$ is $p'$.
 \end{definition}
-
-Here we restricted periods to be right-open, since every
-definition in this article that relies on right-open periods can be
-proved equivalent to a left-open version.
 
 \begin{definition}[Simpleness]
     Let $\gamma$ be a closed curve of period $p$.
@@ -138,12 +134,12 @@ is intersected by a horizontal line: the set of points of intersection
 either has cardinality 2 or is infinite, but when it is infinite
 the set may still be unconnected. This case is not seen to
 be handled in Milnor's proof and does not seem trivial otherwise.
-I think, however, that the lemma is true but it still needs
+I think, however, that the lemma is true but still needs
 an analytical proof for the sake of completeness.
 
 \section{Proof}
 
-Now that we have sanity-checked the equivalency of definitions,
+Now that we have checked the equivalency of definitions,
 we shall first present a lemma and then our main theorem.
 
 \begin{lemma}
@@ -192,8 +188,8 @@ we shall first present a lemma and then our main theorem.
     noncollinear. By Lemma \ref{lem} we may assume that
     $x_2\in(x_1,x_1')$ and $x_3\in(x_1',x_1+p)$.
     Now let $P$ be any period of $\gamma$. Then there exists
-    $c_1,c_1',c_2,c_3\in P$ such that $c_1<c_3<c_1'$,
-    that $\gamma(c_1)=\gamma(c_1')$, and that the points
+    $c_1,c_1',c_2,c_3\in P$ such that $\gamma(c_1)=\gamma(c_1')$,
+    that $c_1<c_3<c_1'$, and that the points
     $p_1=\gamma(c_1),p_2=\gamma(c_2),p_3=\gamma(c_3)$ are noncollinear.
     Let $u\in\mathbb{S}^1$ be a vector perpendicular to
     $\overline{p_1p_2}$. Then we have
