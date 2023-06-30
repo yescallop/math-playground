@@ -1,6 +1,5 @@
 \documentclass{amsart}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{xeCJK}
+\usepackage{amsmath,amssymb,amsthm,xeCJK}
 \setCJKmainfont{SimHei}
 
 \newtheorem{proposition}{Proposition}[section]
@@ -56,17 +55,16 @@ as follows.
 \end{definition}
 
 In fact, every closed curve $\gamma$ of period $p$
-can be factored into two functions
-$\gamma^*:\mathbb{S}^1\to C$ and
-$f:\mathbb{R}\to\mathbb{S}^1$ such that $\gamma=\gamma^*\circ f$,
+can be factored into a unique pair of functions
+$(\gamma^*:\mathbb{S}^1\to C,f:\mathbb{R}\to\mathbb{S}^1)$ such that $\gamma=\gamma^*\circ f$,
 where $\gamma^*$ is a continuous surjection which is not constant
 on any arc and $f(t):=(\cos 2\pi t/p,\sin 2\pi t/p)$.
 We may call $\gamma^*$ the \emph{underlying map} of $\gamma$
 and fix this notation.
 
 Note that the restriction of $f$ to every period of $\gamma$ is bijective. This fact allows us to translate between
-the properties of the periodic function $\gamma$
-(on individual periods) and of the underlying map $\gamma^*$
+the properties of a closed curve $\gamma$
+(on individual periods) and of its underlying map $\gamma^*$
 (on the circle).
 
 \begin{definition}[Simpleness]
@@ -175,12 +173,13 @@ our definitions are equivalent to Milnor's.
     and if it is finite, has cardinality $>2$; this is a contradiction
     to convexity. Now suppose that $f(t_1)<f(t_2)$.
     If $t_1\ne x$ then the proof is identical,
-    so we assume that $t_1=x$. It is always possible to find
-    a $\delta>0$ such that $x-\delta<t_1<t_2<x+p-\delta$.
-    Similarly, there exists $c_1\in(x-\delta,t_1)$ and
-    $c_2<c_3\in(t_1,t_2)$ such that $f(c_i)=y$ for $i=1,2,3$.
-    Let $c_4=c_1+p\in(t_2,x+p)$ and obtain $f(c_4)=y$.
-    Since $f(t_2)\ne y$ we again have a contradiction.
+    so we assume that $t_1=x$. Take $\delta:=(x+p-t_2)/2$.
+    Similarly, there exists $c_1,c_2,c_3,y$ with
+    $x-\delta<c_1<t_1=x<c_2<c_3<t_2<x+p-\delta$
+    and $y<f(t_1)<f(t_2)$ such that
+    $f(c_i)=y$ for $i=1,2,3$.
+    Let $c_4:=c_1+p$ and obtain $f(c_4)=y$ with $c_4\in(t_2,x+p)$.
+    Since $f(t_2)\ne y$, we again have a contradiction.
 \end{proof}
 
 The sufficiency part of the lemma seems way more tricky to prove
@@ -193,7 +192,7 @@ a polygon so that the number of intersections is not decreased.
 Also, we have this particular case when a polygon in the shape of 凸
 (lit. convex; however the shape itself is concave)
 is intersected by a horizontal line: the set of points of intersection
-either has cardinality 2 or is infinite, but when it is infinite
+either has cardinality 2 or is infinite, but when infinite
 the set may still be disconnected. This case is not seen to
 be handled in Milnor's proof and does not seem trivial otherwise.
 I think, however, that the lemma is true but still needs
@@ -206,7 +205,7 @@ we shall first present a lemma and then our main theorem.
 
 \begin{lemma}
     \label{lem}
-    Let $f:(a,b)\cup(b,c)\to\mathbb{R}^2$ be a continuous
+    Let $f:(a,b)\cup(b,c)\to\mathbb{R}^2$ be a
     nonconstant function, and let $p\in\mathbb{R}^2$.
     Suppose that there exists $x_1,x_2\in(a,b)\cup(b,c)$ such that
     the points $p,f(x_1),f(x_2)$ are noncollinear.
@@ -316,7 +315,7 @@ we shall first present a lemma and then our main theorem.
 \begin{definition}[Irreducibility]
     Let $\gamma$ be a closed curve of image $C$.
     We say that $\gamma$ is \emph{irreducible} iff for every period
-    $P$ and every closed interval $[a,b]\subset P$
+    $P$ of $\gamma$ and every closed interval $[a,b]\subset P$
     with $\gamma(a)=\gamma(b)$, we have
     $\gamma([a,b])\ne C$.
 \end{definition}
