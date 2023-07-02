@@ -37,7 +37,7 @@ We first follow Milnor \cite{milnor} to define the concepts in a rigorous manner
 \begin{definition}[Closed curves]
     \label{def:closed_curves}
     A \emph{closed curve} in Euclidean $n$-space $\mathbb{E}^n$ is a
-    continuous periodic surjection $\gamma:\mathbb{R}\to C\subset\mathbb{R}^n$
+    continuous periodic function $\gamma:\mathbb{R}\to\mathbb{R}^n$
     which is not constant on any interval.
 \end{definition}
 
@@ -56,13 +56,15 @@ as follows.
 
 In fact, every closed curve $\gamma$ of period $p$
 can be factored into a unique pair of functions
-$(\gamma^*:\mathbb{S}^1\to C,f:\mathbb{R}\to\mathbb{S}^1)$ such that $\gamma=\gamma^*\circ f$,
-where $\gamma^*$ is a continuous surjection which is not constant
+$(\gamma^*:\mathbb{S}^1\to\mathbb{R}^n,f:\mathbb{R}\to\mathbb{S}^1)$
+such that $\gamma=\gamma^*\circ f$,
+where $\gamma^*$ is a continuous function which is not constant
 on any arc and $f(t):=(\cos 2\pi t/p,\sin 2\pi t/p)$.
 We may call $\gamma^*$ the \emph{underlying map} of $\gamma$
 and fix this notation.
 
-Note that the restriction of $f$ to every period of $\gamma$ is bijective. This fact allows us to translate between
+Note that the restriction of $f$ to every period of $\gamma$ is injective.
+This fact allows us to translate between
 the properties of a closed curve $\gamma$
 (on individual periods) and of its underlying map $\gamma^*$
 (on the unit circle).
@@ -83,9 +85,9 @@ the properties of a closed curve $\gamma$
         \item $\gamma$ is simple.
         \item $\gamma^*$ is a homeomorphism.
         \item For every period $P$ of $\gamma$, the restriction
-              of $\gamma$ to $P$ is bijective.
+              of $\gamma$ to $P$ is injective.
         \item There exists a period $P$ of $\gamma$ such that
-              the restriction of $\gamma$ to $P$ is bijective.
+              the restriction of $\gamma$ to $P$ is injective.
     \end{enumerate}
 \end{proposition}
 
@@ -95,16 +97,16 @@ the properties of a closed curve $\gamma$
 
 \begin{proposition}
     \label{pro:simple_suf_cond}
-    Let $f:\mathbb{R}\to C\subset\mathbb{R}^n$
-    be a continuous periodic surjection,
+    Let $f:\mathbb{R}\to\mathbb{R}^n$
+    be a continuous periodic function,
     and let $p>0$ be a period of $f$. Suppose that
     the restriction of $f$ to some interval $[x_0,x_0+p)$
-    is bijective.
+    is injective.
     Then $f$ is a simple closed curve of period $p$.
 \end{proposition}
 
 \begin{proof}
-    The restriction being bijective implies that
+    The restriction being injective implies that
     $f$ is not constant on any interval and that
     $p$ is the least positive period of $f$. Thus $f$ is a 
     closed curve of period $p$. Then by Proposition
@@ -282,15 +284,17 @@ we shall first present a lemma and then our main theorem.
 
 \begin{proof}
     Let $C$ be a simple subset of $\mathbb{R}^n$.
-    Then there exists a continuous bijection $f:\mathbb{S}^1\to C$.
+    Then there exists a continuous injection $f:\mathbb{S}^1\to\mathbb{R}^n$
+    of image $C$.
     Let $g:\mathbb{R}\to\mathbb{S}^1$ be the function
     $g(t):=(\cos t,\sin t)$. We know that $g$ is continuous
     on $\mathbb{R}$ and periodic with period $2\pi$, and that
     the restriction of $g$ to any interval $[x,x+2\pi)$
-    is bijective. Let $\gamma:\mathbb{R}\to C$ be the function
+    is injective. Let $\gamma:\mathbb{R}\to\mathbb{R}^n$ be the function
     $f\circ g$. Then $\gamma$ is continuous
     on $\mathbb{R}$ and periodic with period $2\pi$, and the
-    restriction of $\gamma$ to any interval $[x,x+2\pi)$ is bijective. It follows from Proposition \ref{pro:simple_suf_cond}
+    restriction of $\gamma$ to any interval $[x,x+2\pi)$ is injective.
+    It follows from Proposition \ref{pro:simple_suf_cond}
     that $\gamma$ is a simple closed curve of image $C$.
 \end{proof}
 
