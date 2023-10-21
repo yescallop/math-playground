@@ -1,5 +1,5 @@
 \documentclass{amsart}
-\usepackage{amsmath,amssymb,amsthm,xeCJK}
+\usepackage{accents,amsmath,amssymb,amsthm,xeCJK}
 \setCJKmainfont{SimHei}
 
 \newtheorem{proposition}{Proposition}[section]
@@ -13,6 +13,9 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
+\newcommand{\lring}[1]{\accentset{\circ}{#1}}
+\newcommand{\ltilde}[1]{\accentset{\sim}{#1}}
+
 \title{When is a convex closed curve not simple?}
 \author{Scallop Ye}
 
@@ -23,7 +26,7 @@
     line is either a set of at most two points or a line segment.
     With analytical definitions of convexity and simpleness,
     we show that a convex closed curve is simple
-    if and only if it does not lie entirely on a line.
+    if and only if it does not lie on a line.
     We conjecture that the same result still holds when
     geometrical definitions are used instead.
 \end{abstract}
@@ -32,45 +35,56 @@
 
 \section{Definitions}
 
-We first follow Milnor \cite{milnor} to define the concepts in a rigorous manner.
+We first follow Milnor \cite{milnor} to
+define the concepts in a rigorous manner.
 
 \begin{definition}[Closed curves]
-    \label{def:closed_curves}
-    A \emph{closed curve} in Euclidean $n$-space $\mathbb{E}^n$ is a
-    continuous periodic function $\gamma:\mathbb{R}\to\mathbb{R}^n$
-    which is not constant on any interval.
+    A \emph{closed curve} in Euclidean $n$-space $\mathbb{E}^n$
+    is a nonconstant continuous periodic function
+    $\gamma:\mathbb{R}\to\mathbb{R}^n$. We say that a closed curve
+    is \emph{planar} iff its image lies on a line or in a plane.
 \end{definition}
+
+Here we do not restrict a closed curve to be light\footnote{
+    A continuous function $f:S_1\to S_2$ is called \emph{light}
+    iff $f^{-1}(y)$ is totally disconnected for each $y\in S_2$
+    (see \cite[Definition 13.1]{nadler}). A closed curve
+    is light iff it is not constant on any interval.
+}, considering that every closed curve may be
+reparameterized to be light, as we will see in Section
+\ref{sec:geometrical_consideration}.
 
 One can show that a closed curve has a least positive period.
 For convenience we redefine the notion of period for closed curves
 as follows.
 
 \begin{definition}[Periods]
-    \label{def:periods}
     Let $\gamma$ be a closed curve of least positive period $p$,
     and let $x\in\mathbb{R}$. We call $p$ \emph{the period} of $\gamma$,
     and the interval $P=[x,x+p)$ \emph{a period} of $\gamma$.
-    We say that a closed curve $\phi$ is \emph{of period} $p'$
-    iff the period of $\phi$ is $p'$.
+    We say that a closed curve $\gamma'$ is \emph{of period} $p'$
+    iff the period of $\gamma'$ is $p'$.
 \end{definition}
 
 In fact, every closed curve $\gamma$ of period $p$
 can be factored into a unique pair of functions
-$(\gamma^*:\mathbb{S}^1\to\mathbb{R}^n,f:\mathbb{R}\to\mathbb{S}^1)$
-such that $\gamma=\gamma^*\circ f$,
-where $\gamma^*$ is a continuous function which is not constant
-on any arc and $f(t):=(\cos 2\pi t/p,\sin 2\pi t/p)$.
-We may call $\gamma^*$ the \emph{underlying map} of $\gamma$
-and fix this notation.
+$(\lring{\gamma}:\mathbb{S}^1\to\mathbb{R}^n,
+    \ltilde{\gamma}:\mathbb{R}\to\mathbb{S}^1)$
+such that $\gamma=\lring{\gamma}\circ\ltilde{\gamma}$,
+where $\lring{\gamma}$ is a nonconstant continuous function
+and $\ltilde{\gamma}(t):=(\cos 2\pi t/p,\sin 2\pi t/p)$.
+We may call $\lring{\gamma}$ the \emph{underlying map} of $\gamma$,
+call $\ltilde{\gamma}$ the \emph{intermediate map} of $\gamma$,
+and fix these notations.
 
-Note that the restriction of $f$ to every period of $\gamma$ is injective.
+Note that the restriction of $\ltilde{\gamma}$ to
+every period of $\gamma$ is bijective.
 This fact allows us to translate between
 the properties of a closed curve $\gamma$
-(on individual periods) and of its underlying map $\gamma^*$
-(on the unit circle).
+(on individual periods) and of its underlying map
+$\lring{\gamma}$ (on the unit circle).
 
 \begin{definition}[Simpleness]
-    \label{def:simpleness}
     Let $\gamma$ be a closed curve of period $p$.
     We say that $\gamma$ is \emph{simple}
     iff for all $t_1,t_2\in\mathbb{R}$, $\gamma(t_1)=\gamma(t_2)$
@@ -83,7 +97,7 @@ the properties of a closed curve $\gamma$
     Then the following are equivalent:
     \begin{enumerate}
         \item $\gamma$ is simple.
-        \item $\gamma^*$ is a homeomorphism.
+        \item $\lring{\gamma}$ is a homeomorphism.
         \item For every period $P$ of $\gamma$, the restriction
               of $\gamma$ to $P$ is injective.
         \item There exists a period $P$ of $\gamma$ such that
@@ -107,37 +121,88 @@ the properties of a closed curve $\gamma$
 
 \begin{proof}
     The restriction being injective implies that
-    $f$ is not constant on any interval and that
-    $p$ is the least positive period of $f$. Thus $f$ is a 
-    closed curve of period $p$. Then by Proposition
-    \ref{pro:simple_equiv} we know that $f$ is simple.
+    $f$ is nonconstant and that $p$ is the least positive
+    period of $f$. Thus $f$ is a closed curve of period $p$.
+    Then by Proposition \ref{pro:simple_equiv}
+    we know that $f$ is simple.
 \end{proof}
 
+We now present a unified definition of convex closed curves in
+all dimensions. Later we will show that the property of convexity
+implies planarity and is preserved under a linear isomorphism
+(thus consistent across all dimensions).
+
 \begin{definition}[Convexity]
-    Let $\gamma$ be a closed curve in $\mathbb{E}^2$.
+    Let $\gamma$ be a closed curve in $\mathbb{E}^n$.
     We say that $\gamma$ is \emph{convex} iff
-    for every line $L\subset\mathbb{R}^2$,
-    there exists a period $P$ of $\gamma$ such that
-    the set $\{t\in P:\gamma(t)\in L\}$ either
-    has cardinality $\le2$ or is a nondegenerate interval.
+    for every hyperplane $H\subset\mathbb{R}^n$,
+    the inverse image $\lring{\gamma}^{-1}(H)$ either
+    has cardinality $\le2$, is a nondegenerate arc,
+    or is the entire unit circle.
 \end{definition}
 
-Here we see that an arc on the circle corresponds
-to an interval on \emph{some} period.
-
 \begin{proposition}
-    A closed curve $\gamma$ in $\mathbb{E}^2$ is convex iff
-    for every $u\in\mathbb{S}^1$ and $y\in\mathbb{R}$,
+    \label{pro:convex_equiv}
+    A closed curve $\gamma$ in $\mathbb{E}^n$ is convex
+    iff for every $u\in\mathbb{S}^{n-1}$ and $y\in\mathbb{R}$,
     there exists a period $P$ of $\gamma$ such that
     the set $\{t\in P:u\cdot\gamma(t)=y\}$ either
     has cardinality $\le2$ or is a nondegenerate interval.
 \end{proposition}
 
+\begin{proof}[Sketch of proof]
+    A normal vector $u\in\mathbb{S}^{n-1}$ and
+    an offset $y\in\mathbb{R}$ from the origin specify
+    a hyperplane $H:=\{x\in\mathbb{R}^n:u\cdot x=y\}$, and
+    every hyperplane in $\mathbb{R}^n$ can be specified in this manner.
+    It only remains to notice that
+    an interval within \emph{some} period of the closed curve $\gamma$
+    specifies an arc on the unit circle or the entire unit circle
+    (the domain of the underlying map $\lring{\gamma}$),
+    and every arc on the unit circle and the entire unit circle
+    can be specified in this manner.
+\end{proof}
+
+\begin{proposition}
+    \label{pro:convex_planar}
+    A convex closed curve is planar.
+\end{proposition}
+
 \begin{proof}
-    A normal vector $u\in\mathbb{S}^1$ and
-    a distance $y\in\mathbb{R}$ from the origin specify
-    a line $L=\{x\in\mathbb{R}^2:u\cdot x=y\}$, and
-    every line in $\mathbb{R}^2$ can be specified in this manner.
+    Let $\gamma$ be a closed curve in $\mathbb{E}^n$ ($n\ge 3$) which
+    is not planar, and let $P$ be any period of $\gamma$.
+    Then there exists $c_1<c_2<c_3<c_4\in P$ such that the points
+    $p_1:=\gamma(c_1),p_2:=\gamma(c_2),
+        p_3:=\gamma(c_3),p_4:=\gamma(c_4)$
+    are noncoplanar. Let $H\subset\mathbb{R}^n$ be a hyperplane
+    such that $p_1,p_3,p_4\in H$ but $p_2\notin H$, and let
+    $u\in\mathbb{S}^{n-1}$ be a vector normal to $H$. Since
+    $u\cdot\gamma(c_1)=u\cdot\gamma(c_3)=u\cdot\gamma(c_4)
+        \ne u\cdot\gamma(c_2)$,
+    the set $\{t\in P:u\cdot\gamma(t)=y\}$ is not an interval,
+    and if it is finite, has cardinality $>2$. Hence $\gamma$
+    is not convex by Proposition \ref{pro:convex_equiv}.
+\end{proof}
+
+\begin{proposition}
+    Let $\gamma$ be a closed curve in $\mathbb{E}^2$ of image $C$,
+    let $\gamma'$ be a planar closed curve in $\mathbb{E}^n$
+    of image $C'$ where $n\ge2$, and
+    let $P\subset\mathbb{R}^n$ be a plane such that $C'\subset P$.
+    Suppose that there exists a linear isomorphism
+    $T:\mathbb{R}^2\to P$ such that $\gamma'=T\circ\gamma$.
+    Then $\gamma$ is convex iff $\gamma'$ is convex.
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+    The intersection of the plane $P$ and
+    a hyperplane $H\subset\mathbb{R}^n$ is either
+    the empty set, a line, or the entire plane $P$ (when $n>2$);
+    conversely, every line in $P$ and the entire plane $P$
+    (when $n>2$) can be written as such an intersection.
+    It only remains to notice that both $T$ and $T^{-1}$
+    transforms lines into lines and the entire plane into
+    the other plane, in a one-to-one manner.
 \end{proof}
 
 We then prove a generalization of the necessity part
@@ -149,20 +214,22 @@ our definitions are equivalent to Milnor's.
     let $u\in\mathbb{S}^{n-1}$,
     and let $P$ be any period of $\gamma$.
     Define $\mu(\gamma,u)$ to be the cardinality of the set
-    $\{t\in P:\text{the function }u\cdot\gamma\text{ attains a local maximum at }t\}$
+    $\{t\in P:\text{the function }u\cdot\gamma
+        \text{ attains a local maximum at }t\}$
     if it is finite, or $\infty$ otherwise.
 \end{definition}
 
 \begin{proposition}
-    Let $\gamma$ be a closed curve in $\mathbb{E}^2$.
-    If $\gamma$ is convex, then for every $u\in\mathbb{S}^1$
+    Let $\gamma$ be a closed curve in $\mathbb{E}^n$.
+    If $\gamma$ is convex, then for every $u\in\mathbb{S}^{n-1}$
     either $\mu(\gamma,u)=1$ or $\mu(\gamma,u)=\infty$.
 \end{proposition}
 
 \begin{proof}
-    Suppose that $2\le\mu(\gamma,u)<\infty$ for some $u\in\mathbb{S}^1$.
+    Suppose that $2\le\mu(\gamma,u)<\infty$
+    for some $u\in\mathbb{S}^{n-1}$.
     Let $f:\mathbb{R}\to\mathbb{R}$ be the function $u\cdot\gamma$,
-    let $P=[x,x+p)$ be any period of $\gamma$, and let $t_1<t_2\in P$
+    let $P:=[x,x+p)$ be any period of $\gamma$, and let $t_1<t_2\in P$
     such that $f$ attains local maxima at $t_1$ and $t_2$.
     Suppose that $f(t_1)\ge f(t_2)$.
     Since $f$ attains a finite number of local maxima in $P$,
@@ -171,9 +238,8 @@ our definitions are equivalent to Milnor's.
     By the intermediate value theorem there exists
     $c_1\in(t_1,a)$, $c_2\in(a,t_2)$, and $c_3\in(t_2,b)$ such that
     $f(c_i)=y$ for $i=1,2,3$. Since $f(t_2)\ne y$, we know that
-    the set $\{t\in P:u\cdot\gamma(t)=y\}$ is not an interval,
-    and if it is finite, has cardinality $>2$; this is a contradiction
-    to convexity. Now suppose that $f(t_1)<f(t_2)$.
+    $\gamma$ is not convex, a contradiction.
+    Now suppose that $f(t_1)<f(t_2)$.
     If $t_1\ne x$ then the proof is identical,
     so we assume that $t_1=x$. Take $\delta:=(x+p-t_2)/2$.
     Similarly, there exists $c_1,c_2,c_3,y$ with
@@ -204,6 +270,8 @@ an analytical proof for the sake of completeness.
 
 Now that we have checked the equivalence of definitions,
 we shall first present a lemma and then our main theorem.
+Note that it suffices to give proofs for the two-dimensional case
+as a convex closed curve is planar.
 
 \begin{lemma}
     \label{lem}
@@ -227,53 +295,59 @@ we shall first present a lemma and then our main theorem.
 
 \begin{theorem}
     \label{thm:main}
-    A convex closed curve is simple iff
-    it does not lie entirely on a line.
+    A convex closed curve is simple iff it does not lie on a line.
 \end{theorem}
 
 \begin{proof}
     The image of a simple closed curve is homeomorphic to
     $\mathbb{S}^1$ and thus cannot be one-dimensional.
     Let $\gamma$ be a convex closed curve in $\mathbb{E}^2$
-    which is not simple and does not lie entirely on a line.
-    Let $X=[x_1,x_1+p)$ be a period of $\gamma$ such that
+    which is not simple and does not lie on a line.
+    Let $X:=[x_1,x_1+p)$ be a period of $\gamma$ such that
     $\gamma(x_1)=\gamma(x_1')$ for some $x_1'\in(x_1,x_1+p)$.
     Then there exists $x_2,x_3\in(x_1,x_1')\cup(x_1',x_1+p)$
     such that the points $\gamma(x_1),\gamma(x_2),\gamma(x_3)$ are
     noncollinear. By Lemma \ref{lem} we may assume that
     $x_2\in(x_1,x_1')$ and $x_3\in(x_1',x_1+p)$.
     Now let $P$ be any period of $\gamma$. Then there exists
-    $c_1,c_1',c_2,c_3\in P$ such that $\gamma(c_1)=\gamma(c_1')$,
-    that $c_1<c_3<c_1'$, and that the points
-    $p_1=\gamma(c_1),p_2=\gamma(c_2),p_3=\gamma(c_3)$ are noncollinear.
+    $c_1,c_2,c_1',c_3\in P$ such that $\gamma(c_1)=\gamma(c_1')$,
+    that $c_1<c_2<c_1'$, and that the points
+    $p_1:=\gamma(c_1),p_2:=\gamma(c_2),p_3:=\gamma(c_3)$ are noncollinear.
     Let $u\in\mathbb{S}^1$ be a vector perpendicular to
-    $\overline{p_1p_2}$. Then we have
-    $u\cdot\gamma(c_1)=u\cdot\gamma(c_1')=u\cdot\gamma(c_2)
-        \ne u\cdot\gamma(c_3)$, a contradiction to convexity.
+    $\overline{p_1p_3}$. Then we have
+    $u\cdot\gamma(c_1)=u\cdot\gamma(c_1')=u\cdot\gamma(c_3)
+        \ne u\cdot\gamma(c_2)$, a contradiction to convexity.
 \end{proof}
 
 \section{Geometrical Consideration}
+\label{sec:geometrical_consideration}
+
+\begin{definition}[Parameterizations]
+    Let $\gamma$ be a closed curve in $\mathbb{E}^n$,
+    and let $C\subset\mathbb{R}^n$.
+    We say that $\gamma$ is a \emph{parameterization}
+    of $C$ iff the image of $\gamma$ is $C$.
+    Two closed curves are said to be
+    \emph{reparameterizations} of each other
+    iff their images equal.
+\end{definition}
+
+\begin{proposition}
+    \label{pro:light_repar}
+    Every closed curve has a light reparameterization.
+\end{proposition}
+
+\begin{proof}
+    The claim follows from \cite[Corollary 13.4]{nadler}
+    by viewing maps $f:\mathbb{S}^1\to\mathbb{R}^n$
+    as maps $f:[0,1]\to\mathbb{R}^n$ with $f(0)=f(1)$.
+\end{proof}
 
 \begin{definition}[Simple sets]
     Let $C\subset\mathbb{R}^n$.
     We say that $C$ is \emph{simple}
     iff $C$ is homeomorphic to
     the unit circle $\mathbb{S}^1$.
-\end{definition}
-
-\begin{definition}[Weakly convex sets]
-    Let $C\subset\mathbb{R}^2$. We say that $C$ is
-    \emph{weakly convex}, or simply \emph{convex},
-    iff for every line $L\subset\mathbb{R}^2$, the set $C\cap L$
-    either has cardinality $\le2$ or is a nondegenerate line segment.
-\end{definition}
-
-\begin{definition}[Parameterizations]
-    Let $\gamma$ be a closed curve in $\mathbb{E}^n$,
-    and let $C\subset\mathbb{R}^n$.
-    We say that $\gamma$ is
-    a \emph{parameterization} of $C$ iff the image of $\gamma$
-    is $C$.
 \end{definition}
 
 \begin{proposition}
@@ -284,36 +358,40 @@ we shall first present a lemma and then our main theorem.
 
 \begin{proof}
     Let $C$ be a simple subset of $\mathbb{R}^n$.
-    Then there exists a continuous injection $f:\mathbb{S}^1\to\mathbb{R}^n$
-    of image $C$.
+    Then there exists a continuous injection
+    $f:\mathbb{S}^1\to\mathbb{R}^n$ of image $C$.
     Let $g:\mathbb{R}\to\mathbb{S}^1$ be the function
     $g(t):=(\cos t,\sin t)$. We know that $g$ is continuous
     on $\mathbb{R}$ and periodic with period $2\pi$, and that
-    the restriction of $g$ to any interval $[x,x+2\pi)$
-    is injective. Let $\gamma:\mathbb{R}\to\mathbb{R}^n$ be the function
+    the restriction $g|_{[0,2\pi)}$ is injective.
+    Let $\gamma:\mathbb{R}\to\mathbb{R}^n$ be the function
     $f\circ g$. Then $\gamma$ is continuous
     on $\mathbb{R}$ and periodic with period $2\pi$, and the
-    restriction of $\gamma$ to any interval $[x,x+2\pi)$ is injective.
+    restriction $\gamma|_{[0,2\pi)}$ is injective.
     It follows from Proposition \ref{pro:simple_suf_cond}
     that $\gamma$ is a simple closed curve of image $C$.
 \end{proof}
 
+\begin{definition}[Weakly convex sets]
+    Let $C\subset\mathbb{R}^2$. We say that $C$ is \emph{weakly convex}
+    iff for every line $L\subset\mathbb{R}^2$, the set $C\cap L$
+    either has cardinality $\le2$ or is a nondegenerate line segment.
+\end{definition}
+
 \begin{proposition}
     \label{pro:simple_convex}
-    A simple closed curve of convex image is convex.
+    A simple closed curve of weakly convex image is convex.
 \end{proposition}
 
 \begin{proof}
-    Let $\gamma$ be a simple closed curve of convex image $C$.
-    It follows from Proposition \ref{pro:simple_equiv}
-    that $\gamma^*$ is a homeomorphism.
-    Let $L\subset\mathbb{R}^2$ be any line.
-    Since $C$ is convex, the set $C\cap L$
+    Let $\gamma$ be a simple closed curve of weakly convex image $C$,
+    and let $L\subset\mathbb{R}^2$ be any line.
+    Since $C$ is weakly convex, the set $C\cap L$
     either has cardinality $\le2$ or is a nondegenerate line segment.
-    Thus the inverse image $(\gamma^*)^{-1}(C\cap L)$
-    either has cardinality $\le2$ or is a nondegenerate arc.
-    Recall that an arc on the circle corresponds to an interval
-    on some period, and so we have $\gamma$ convex by definition.
+    Since $\lring{\gamma}$ is a homeomorphism by Proposition
+    \ref{pro:simple_equiv}, the inverse image $\lring{\gamma}^{-1}(L)$
+    either has cardinality $\le2$, is a nondegenerate arc, or is
+    the entire unit circle. Thus $\gamma$ is convex by definition.
 \end{proof}
 
 \begin{definition}[Irreducibility]
@@ -331,11 +409,12 @@ This sounds like a good property indeed,
 so let us make some conjectures on it.
 It is conceivable that
 \ref{con:irr_exists} already has a proof somewhere,
-and that \ref{con:irr_simple} has a simple proof.
+and that \ref{con:irr_simple} and/or
+\ref{con:irr_one_dimensional_convex} have simple proofs.
 
 \begin{conjecture}
     \label{con:irr_exists}
-    The image of a closed curve has an irreducible parameterization.
+    Every closed curve has an irreducible reparameterization.
 \end{conjecture}
 
 \begin{conjecture}
@@ -344,22 +423,28 @@ and that \ref{con:irr_simple} has a simple proof.
 \end{conjecture}
 
 \begin{conjecture}
-    \label{con:irr_convex}
-    An irreducible closed curve of convex image is convex.
+    \label{con:irr_one_dimensional_convex}
+    An irreducible closed curve that lies on a line is convex.
 \end{conjecture}
 
-% FIXME: It is not entirely clear that $\gamma$ is convex
-%        in the first case.
-% \begin{proof}[Proof that
-%         $\ref{con:irr_simple}\land\ref{con:main}
-%             \implies\ref{con:irr_convex}$]
-%     Let $\gamma$ be an irreducible closed curve of convex
-%     image $C$. If $C$ is a subset of a line, then $\gamma$
-%     is clearly convex. If $C$ is not a subset of a line,
-%     then we have $C$ simple by Conjecture \ref{con:main},
-%     $\gamma$ simple by Conjecture \ref{con:irr_simple},
-%     and thus $\gamma$ convex by Proposition \ref{pro:simple_convex}.
-% \end{proof}
+\begin{conjecture}
+    \label{con:irr_convex}
+    An irreducible closed curve of weakly convex image is convex.
+\end{conjecture}
+
+\begin{proof}[Proof that
+        $\ref{con:irr_simple}
+            \land\ref{con:irr_one_dimensional_convex}
+            \land\ref{con:main}
+            \implies\ref{con:irr_convex}$]
+    Let $\gamma$ be an irreducible closed curve of weakly convex
+    image $C$. If $C$ is a subset of a line, then $\gamma$
+    is convex by Conjecture \ref{con:irr_one_dimensional_convex}.
+    If $C$ is not a subset of a line,
+    then we have $C$ simple by Conjecture \ref{con:main},
+    $\gamma$ simple by Conjecture \ref{con:irr_simple},
+    and thus $\gamma$ convex by Proposition \ref{pro:simple_convex}.
+\end{proof}
 
 We then present two equivalent conjectures.
 Note that Conjecture \ref{con:main} is the geometrical analog to
@@ -367,13 +452,14 @@ our main theorem.
 
 \begin{conjecture}
     \label{con:convex}
-    Let $C$ be the image of a closed curve. If $C$ is convex,
+    Let $C$ be the image of a closed curve. If $C$ is weakly convex,
     then $C$ has a convex parameterization.
 \end{conjecture}
 
 \begin{proof}[Proof that
-    $\ref{con:irr_exists}\land\ref{con:irr_convex}
-        \implies\ref{con:convex}$]
+        $\ref{con:irr_exists}
+            \land\ref{con:irr_convex}
+            \implies\ref{con:convex}$]
     This implication is immediate.
 \end{proof}
 
@@ -388,7 +474,8 @@ our main theorem.
 
 \begin{conjecture}
     \label{con:main}
-    Let $C$ be the image of a closed curve. Suppose that $C$ is convex.
+    Let $C$ be the image of a closed curve.
+    Suppose that $C$ is weakly convex.
     Then $C$ is simple iff $C$ is not a subset of a line.
 \end{conjecture}
 
@@ -408,6 +495,11 @@ our main theorem.
     \emph{On the Total Curvature of Knots},
     Ann. of Math.
     \textbf{52} (1950), no. 2, 248-257.
+
+    \bibitem{nadler}
+    S. B. Nadler, Jr.,
+    \emph{Continuum Theory: An Introduction},
+    CRC Press, Boca Raton, 1992.
 
 \end{thebibliography}
 
