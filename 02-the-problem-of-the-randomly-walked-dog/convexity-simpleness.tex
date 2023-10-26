@@ -174,8 +174,8 @@ implies planarity and is preserved under a linear isomorphism
     Then there exists $c_1<c_2<c_3<c_4\in P$ such that the points
     $p_1:=\gamma(c_1),p_2:=\gamma(c_2),
         p_3:=\gamma(c_3),p_4:=\gamma(c_4)$
-    are noncoplanar. Let $H\subset\mathbb{R}^n$ be a hyperplane
-    such that $p_1,p_3,p_4\in H$ but $p_2\notin H$, and let
+    are noncoplanar. We can find a hyperplane $H\subset\mathbb{R}^n$
+    such that $p_1,p_3,p_4\in H$ but $p_2\notin H$ (why?). Now let
     $u\in\mathbb{S}^{n-1}$ be a vector normal to $H$. Since
     $u\cdot\gamma(c_1)=u\cdot\gamma(c_3)=u\cdot\gamma(c_4)
         \ne u\cdot\gamma(c_2)$,
@@ -185,24 +185,18 @@ implies planarity and is preserved under a linear isomorphism
 \end{proof}
 
 \begin{proposition}
-    Let $\gamma$ be a closed curve in $\mathbb{E}^2$ of image $C$,
-    let $\gamma'$ be a planar closed curve in $\mathbb{E}^n$
-    of image $C'$ where $n\ge2$, and
-    let $P\subset\mathbb{R}^n$ be a plane such that $C'\subset P$.
+    \label{pro:convex_preserved}
+    Let $1\le m\le n$ be integers, let $\gamma$ be a closed curve
+    in $\mathbb{E}^m$ of image $C$, and let $\gamma'$ be a closed curve
+    in $\mathbb{E}^n$ of image $C'$ such that $C'\subset S$
+    for some $m$-subspace $S\subset\mathbb{R}^n$.
     Suppose that there exists a linear isomorphism
-    $T:\mathbb{R}^2\to P$ such that $\gamma'=T\circ\gamma$.
+    $T:\mathbb{R}^m\to S$ such that $\gamma'=T\circ\gamma$.
     Then $\gamma$ is convex iff $\gamma'$ is convex.
 \end{proposition}
 
 \begin{proof}[Sketch of proof]
-    The intersection of the plane $P$ and
-    a hyperplane $H\subset\mathbb{R}^n$ is either
-    the empty set, a line, or the entire plane $P$ (when $n>2$);
-    conversely, every line in $P$ and the entire plane $P$
-    (when $n>2$) can be written as such an intersection.
-    It only remains to notice that both $T$ and $T^{-1}$
-    transforms lines into lines and the entire plane into
-    the other plane, in a one-to-one manner.
+    To be rewritten.
 \end{proof}
 
 We then prove a generalization of the necessity part
@@ -404,28 +398,38 @@ as a convex closed curve is planar.
 
 Being irreducible means that the curve does not contain
 ``redundant loops'' which do not contribute to its image
-and can thus be removed.
-This sounds like a good property indeed,
-so let us make some conjectures on it.
-It is conceivable that
-\ref{con:irr_exists} already has a proof somewhere,
-and that \ref{con:irr_simple} and/or
-\ref{con:irr_one_dimensional_convex} have simple proofs.
+and can thus be removed. We now proceed to establish
+that every closed curve may be reparameterized to be
+irreducible, laying the groundwork for our main conjecture.
+
+\begin{lemma}
+    \label{lem:irr_exists}
+    Every closed curve has an irreducible reparameterization.
+\end{lemma}
+
+\begin{proof}
+    To be written.
+\end{proof}
 
 \begin{conjecture}
-    \label{con:irr_exists}
-    Every closed curve has an irreducible reparameterization.
+    \label{con:irr_linear_convex}
+    An irreducible closed curve that lies on a line is convex.
 \end{conjecture}
+
+\begin{proof}[Sketch of proof]
+    Let $\gamma$ be a closed curve in $\mathbb{E}^1$ which is
+    not convex. By Proposition \ref{pro:convex_preserved},
+    it suffices to show that $\gamma$ is not irreducible.
+\end{proof}
 
 \begin{conjecture}
     \label{con:irr_simple}
     An irreducible closed curve of simple image is simple.
 \end{conjecture}
 
-\begin{conjecture}
-    \label{con:irr_one_dimensional_convex}
-    An irreducible closed curve that lies on a line is convex.
-\end{conjecture}
+We then present three correlated conjectures, the last one
+being our main conjecture, the geometrical analogue to
+our main theorem.
 
 \begin{conjecture}
     \label{con:irr_convex}
@@ -433,22 +437,18 @@ and that \ref{con:irr_simple} and/or
 \end{conjecture}
 
 \begin{proof}[Proof that
-        $\ref{con:irr_simple}
-            \land\ref{con:irr_one_dimensional_convex}
+        $\ref{con:irr_linear_convex}
+            \land\ref{con:irr_simple}
             \land\ref{con:main}
             \implies\ref{con:irr_convex}$]
     Let $\gamma$ be an irreducible closed curve of weakly convex
     image $C$. If $C$ is a subset of a line, then $\gamma$
-    is convex by Conjecture \ref{con:irr_one_dimensional_convex}.
+    is convex by Conjecture \ref{con:irr_linear_convex}.
     If $C$ is not a subset of a line,
     then we have $C$ simple by Conjecture \ref{con:main},
     $\gamma$ simple by Conjecture \ref{con:irr_simple},
     and thus $\gamma$ convex by Proposition \ref{pro:simple_convex}.
 \end{proof}
-
-We then present two equivalent conjectures.
-Note that Conjecture \ref{con:main} is the geometrical analog to
-our main theorem.
 
 \begin{conjecture}
     \label{con:convex}
@@ -456,19 +456,19 @@ our main theorem.
     then $C$ has a convex parameterization.
 \end{conjecture}
 
-\begin{proof}[Proof that
-        $\ref{con:irr_exists}
-            \land\ref{con:irr_convex}
+\begin{proof}[Proof that $\ref{con:irr_convex}
             \implies\ref{con:convex}$]
-    This implication is immediate.
+    By Lemma \ref{lem:irr_exists} there exists an irreducible
+    parameterization of $C$,
+    which is convex by Conjecture \ref{con:irr_convex}.
 \end{proof}
 
 \begin{proof}[Proof that $\ref{con:main}\implies\ref{con:convex}$]
     If $C$ is not simple, then by Conjecture
     \ref{con:main} we know that $C$ is a subset of a line,
-    which clearly is a line segment and has a convex parameterization.
+    which certainly is a line segment and has a convex parameterization.
     If $C$ is simple, then by Proposition \ref{pro:simple_par}
-    there exists a simple parameterization $\gamma$ of $C$,
+    there exists a simple parameterization of $C$,
     which is convex by Proposition \ref{pro:simple_convex}.
 \end{proof}
 
