@@ -72,16 +72,18 @@ $(\lring{\gamma}:\mathbb{S}^1\to\mathbb{R}^n,
     \ltilde{\gamma}:\mathbb{R}\to\mathbb{S}^1)$
 such that $\gamma=\lring{\gamma}\circ\ltilde{\gamma}$,
 where $\lring{\gamma}$ is a nonconstant continuous function
-and $\ltilde{\gamma}(t):=(\cos 2\pi t/p,\sin 2\pi t/p)$.
-We may call $\lring{\gamma}$ the \emph{underlying map} of $\gamma$,
-call $\ltilde{\gamma}$ the \emph{intermediate map} of $\gamma$,
+and $\ltilde{\gamma}$ is another closed curve
+$\ltilde{\gamma}(t):=(\cos 2\pi t/p,\sin 2\pi t/p)$
+whose image is the unit circle $\mathbb{S}^1$. We may call
+$\lring{\gamma}$ the \emph{equivalent circular map} of $\gamma$,
+call $\ltilde{\gamma}$ the \emph{underlying circle} of $\gamma$,
 and fix these notations.
 
 Note that the restriction of $\ltilde{\gamma}$ to
-every period of $\gamma$ is bijective.
+every period of $\gamma$ is continuous and bijective.
 This fact allows us to translate between
 the properties of a closed curve $\gamma$
-(on individual periods) and of its underlying map
+(on individual periods) and of its equivalent circular map
 $\lring{\gamma}$ (on the unit circle).
 
 \begin{definition}[Simpleness]
@@ -129,7 +131,7 @@ $\lring{\gamma}$ (on the unit circle).
 
 We now present a unified definition of convex closed curves in
 all dimensions. Later we will show that the property of convexity
-implies planarity and is preserved under a linear isomorphism
+implies planarity and is preserved under a bijective affine map
 (thus consistent across all dimensions).
 
 \begin{definition}[Convexity]
@@ -138,7 +140,7 @@ implies planarity and is preserved under a linear isomorphism
     for every hyperplane $H\subset\mathbb{R}^n$,
     the inverse image $\lring{\gamma}^{-1}(H)$ either
     has cardinality $\le2$, is a nondegenerate arc,
-    or is the entire unit circle.
+    or is the unit circle $\mathbb{S}^1$.
 \end{definition}
 
 \begin{proposition}
@@ -150,17 +152,44 @@ implies planarity and is preserved under a linear isomorphism
     has cardinality $\le2$ or is a nondegenerate interval.
 \end{proposition}
 
-\begin{proof}[Sketch of proof]
-    A normal vector $u\in\mathbb{S}^{n-1}$ and
-    an offset $y\in\mathbb{R}$ from the origin specify
-    a hyperplane $H:=\{x\in\mathbb{R}^n:u\cdot x=y\}$, and
-    every hyperplane in $\mathbb{R}^n$ can be specified in this manner.
-    It only remains to notice that
-    an interval within \emph{some} period of the closed curve $\gamma$
-    specifies an arc on the unit circle or the entire unit circle
-    (the domain of the underlying map $\lring{\gamma}$),
-    and every arc on the unit circle and the entire unit circle
-    can be specified in this manner.
+\begin{proof}
+    Suppose that there exists a hyperplane $H\subset\mathbb{R}^n$
+    such that $\lring{\gamma}^{-1}(H)$ is neither an arc
+    nor $\mathbb{S}^1$, and if it is finite, has cardinality $>2$.
+    Then we can find a normal vector $u\in\mathbb{S}^{n-1}$ and an
+    offset $y\in\mathbb{R}$ such that
+    $H=\{x\in\mathbb{R}^n:u\cdot x=y\}$.
+    We claim that there does not exist a period $P$ of $\gamma$
+    such that the set $T:=\{t\in P:u\cdot\gamma(t)=y\}$
+    either has cardinality $\le2$ or is a nondegenerate interval,
+    because otherwise
+    \[\lring{\gamma}^{-1}(H)
+        =\ltilde{\gamma}(\gamma^{-1}(H))
+        =\ltilde{\gamma}(\gamma^{-1}(H)\cap P)
+        =\ltilde{\gamma}(T)\]
+    would either have cardinality $\le2$
+    (when $T$ has cardinality $\le2$),
+    be a nondegenerate arc (when $T$ is a nondegenerate
+    proper subinterval of $P$),
+    or be $\mathbb{S}^1$ (when $T=P$).
+
+    Now suppose that there exists $u\in\mathbb{S}^{n-1}$ and
+    $y\in\mathbb{R}$ such that for every period $P$ of $\gamma$,
+    the set $T:=\{t\in P:u\cdot\gamma(t)=y\}$ is not an interval,
+    and if it is finite, has cardinality $>2$.
+    Let $H$ be the hyperplane $H:=\{x\in\mathbb{R}^n:u\cdot x=y\}$.
+    Then $\lring{\gamma}^{-1}(H)$ is neither an arc nor
+    $\mathbb{S}^1$, and if it is finite, has cardinality $>2$,
+    since otherwise \[T=\gamma^{-1}(H)\cap P
+        =\ltilde{\gamma}^{-1}(\lring{\gamma}^{-1}(H))\cap P\]
+    would either have cardinality $\le2$ for any period $P$ of
+    $\gamma$ (when $\lring{\gamma}^{-1}(H)$ has cardinality $\le2$),
+    be a nondegenerate proper subinterval of $P$ for some period
+    $P:=[x_0,x_0+p)$ of $\gamma$ such that
+    $\ltilde{\gamma}(x_0)\notin\lring{\gamma}^{-1}(H)$
+    (when $\lring{\gamma}^{-1}(H)$ is a nondegenerate arc),
+    or be $P$ for any period $P$ of $\gamma$
+    (when $\lring{\gamma}^{-1}(H)=\mathbb{S}^1$).
 \end{proof}
 
 \begin{proposition}
@@ -174,8 +203,10 @@ implies planarity and is preserved under a linear isomorphism
     Then there exists $c_1<c_2<c_3<c_4\in P$ such that the points
     $p_1:=\gamma(c_1),p_2:=\gamma(c_2),
         p_3:=\gamma(c_3),p_4:=\gamma(c_4)$
-    are noncoplanar. We can find a hyperplane $H\subset\mathbb{R}^n$
-    such that $p_1,p_3,p_4\in H$ but $p_2\notin H$ (why?). Now let
+    are noncoplanar. Observe that every plane in $\mathbb{R}^n$
+    can be written as an intersection of hyperplanes, and so
+    we can find a hyperplane $H\subset\mathbb{R}^n$
+    such that $p_1,p_3,p_4\in H$ but $p_2\notin H$. Now let
     $u\in\mathbb{S}^{n-1}$ be a vector normal to $H$. Since
     $u\cdot\gamma(c_1)=u\cdot\gamma(c_3)=u\cdot\gamma(c_4)
         \ne u\cdot\gamma(c_2)$,
@@ -186,17 +217,33 @@ implies planarity and is preserved under a linear isomorphism
 
 \begin{proposition}
     \label{pro:convex_preserved}
-    Let $1\le m\le n$ be integers, let $\gamma$ be a closed curve
-    in $\mathbb{E}^m$ of image $C$, and let $\gamma'$ be a closed curve
-    in $\mathbb{E}^n$ of image $C'$ such that $C'\subset S$
-    for some $m$-subspace $S\subset\mathbb{R}^n$.
-    Suppose that there exists a linear isomorphism
-    $T:\mathbb{R}^m\to S$ such that $\gamma'=T\circ\gamma$.
+    Let $1\le n\le m$ be integers, let $\gamma$ be a closed curve
+    in $\mathbb{E}^n$ of image $C$, and let $\gamma'$ be a closed curve
+    in $\mathbb{E}^m$ of image $C'$ such that $C'\subset F$
+    for some $n$-flat $F\subset\mathbb{R}^m$.
+    Suppose that there exists a bijective affine map
+    $f:\mathbb{R}^n\to F$ such that $\gamma'=f\circ\gamma$.
     Then $\gamma$ is convex iff $\gamma'$ is convex.
 \end{proposition}
 
 \begin{proof}[Sketch of proof]
-    To be rewritten.
+    Suppose that $\gamma$ is not convex.
+    Then there exists a hyperplane $H\subset\mathbb{R}^n$
+    such that $\lring{\gamma}^{-1}(H)$ is neither an arc
+    nor $\mathbb{S}^1$, and if it is finite, has cardinality $>2$.
+    We can find a hyperplane $H'\subset\mathbb{R}^m$ such that
+    $F\cap H'=f(H)$ (why?). It only remains to show that
+    $\lring{\gamma}'^{-1}(H')=\lring{\gamma}^{-1}(H)$.
+
+    Now suppose that $\gamma'$ is not convex.
+    Then there exists a hyperplane $H'\subset\mathbb{R}^m$
+    such that $\lring{\gamma}'^{-1}(H')$ is neither an arc
+    nor $\mathbb{S}^1$, and if it is finite, has cardinality $>2$.
+    The intersection $F\cap H'$ must be an $(n-1)$-flat
+    in $\mathbb{R}^m$ (why?), so the inverse image
+    $H:=f^{-1}(H')$ is a hyperplane in $\mathbb{R}^n$.
+    It only remains to show that
+    $\lring{\gamma}^{-1}(H)=\lring{\gamma}'^{-1}(H')$.
 \end{proof}
 
 We then prove a generalization of the necessity part
@@ -233,6 +280,7 @@ our definitions are equivalent to Milnor's.
     $c_1\in(t_1,a)$, $c_2\in(a,t_2)$, and $c_3\in(t_2,b)$ such that
     $f(c_i)=y$ for $i=1,2,3$. Since $f(t_2)\ne y$, we know that
     $\gamma$ is not convex, a contradiction.
+
     Now suppose that $f(t_1)<f(t_2)$.
     If $t_1\ne x$ then the proof is identical,
     so we assume that $t_1=x$. Take $\delta:=(x+p-t_2)/2$.
@@ -384,8 +432,8 @@ as a convex closed curve is planar.
     either has cardinality $\le2$ or is a nondegenerate line segment.
     Since $\lring{\gamma}$ is a homeomorphism by Proposition
     \ref{pro:simple_equiv}, the inverse image $\lring{\gamma}^{-1}(L)$
-    either has cardinality $\le2$, is a nondegenerate arc, or is
-    the entire unit circle. Thus $\gamma$ is convex by definition.
+    either has cardinality $\le2$ or is infinite and connected.
+    Thus $\gamma$ is convex by definition.
 \end{proof}
 
 \begin{definition}[Irreducibility]
