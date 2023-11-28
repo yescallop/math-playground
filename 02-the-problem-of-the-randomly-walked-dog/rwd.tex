@@ -20,15 +20,16 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 
-\title{The Problem of the Randomly Walked Dog}
+\title{The problem of the randomly walked dog}
 \author{Scallop Ye}
 
 \begin{document}
 
 \begin{abstract}
     In 1905, Karl Pearson \cite{pearson} proposed on \emph{Nature} the
-    famous problem of the random walk. In this article, we present a novel
-    combinatorial optimization problem in the spirit of Pearson's one,
+    famous problem of the random walk. In this article, we present a novel problem
+    (possibly a combinatorial optimization problem)
+    in the spirit of Pearson's one,
     along with a curious conjecture on the property of its solutions.
 \end{abstract}
 
@@ -36,8 +37,8 @@
 
 \section{Introduction}
 
-A man walks the dog every day. The dog will prepare $n$ cards beforehand ($n\ge3$),
-each containing a direction and a distance.
+A man walks the dog every day. The dog will prepare $n\ge3$ cards beforehand,
+each containing a direction and a positive distance.
 They start from home and repeat the following process $n$ times:
 
 \begin{enumerate}
@@ -50,8 +51,8 @@ They start from home and repeat the following process $n$ times:
 After these $n$ rounds, they shall be exactly back home. The dog wins a treat
 if they visited home exactly twice and any other place at most once.
 
-Now, you are to instruct the dog how to maximize the probability of winning the
-treat in a walk. Note that too much calculation exhausts the dog.
+Now, help the dog to choose $n$ cards that maximize the probability
+of winning the treat in a walk.
 
 \begin{remark}
     As one might have seen, this problem differs from Pearson’s one in that
@@ -133,19 +134,19 @@ Finally, we define the value we are maximizing and then the problem:
 \end{framed}
 \end{problem}
 
-This can be viewed as a combinatorial optimization problem,
-because without loss of generality we may restrict step vectors
+This could be viewed as a combinatorial optimization problem,
+because without loss of generality we might restrict step vectors
 to those in $\mathbb{Z}^2$ with magnitudes less than some $f(n)$,
 hence a finite set of feasible solutions. However, this problem is
 quite peculiar in that
 (a) each instance is only a single natural number,
-(b) the set of feasible solutions is not easily restricted to be finite,
+(b) the set of feasible solutions is not readily restricted to be finite,
 and (c) the value of a feasible solution is not easily computed
 even for moderately large $n$.
 
 Despite all these peculiarities, the solutions to the problem seem
 to have such a nice property that their values are in
-a simple closed form (see Conjecture \ref{conj:value_formula}).
+a simple closed form (see Conjecture \ref{con:value_formula}).
 One would naturally think that a clever algorithm ought to be found,
 if only one that runs in linear time.
 
@@ -182,27 +183,27 @@ By computer simulation on Problem \ref{prob:rwd}, we observe that the maximum
 simplicity on record follows a very simple formula, hence the following conjecture.
 
 \begin{conjecture}
-    \label{conj:value_formula}
+    \label{con:value_formula}
     The maximum simplicity of a zero-sum $n$-step sequence
     is exactly $2\cdot n!/(n-1)$.
 \end{conjecture}
 
 \begin{thebibliography}{9}
 
-    \bibitem{pearson}
-    K. Pearson,
-    \emph{The Problem of the Random Walk},
-    Nature \textbf{72} (1905), 294.
-
     \bibitem{milnor}
     J. W. Milnor,
-    \emph{On the Total Curvature of Knots},
+    \emph{On the total curvature of knots},
     Ann. of Math.
-    \textbf{52} (1950), no. 2, 248-257.
+    \textbf{52} (1950), no. 2, 248--257.
+
+    \bibitem{pearson}
+    K. Pearson,
+    \emph{The problem of the random walk},
+    Nature \textbf{72} (1905), no. 1865, 294.
 
     \bibitem{ye}
     S. Ye,
-    \emph{When is a convex closed curve not simple?},
+    \emph{Nonlinear convex closed curves are simple},
     preprint.
 
 \end{thebibliography}
