@@ -26,10 +26,8 @@
 \begin{document}
 
 \begin{abstract}
-    In 1905, Karl Pearson \cite{pearson} proposed on \emph{Nature} the
-    famous problem of the random walk. In this article, we present a novel problem
-    (possibly a combinatorial optimization problem)
-    in the spirit of Pearson's one,
+    In this article, we present a novel problem in the spirit of
+    the well-known problem of the random walk \cite{pearson},
     along with a curious conjecture on the property of its solutions.
 \end{abstract}
 
@@ -40,32 +38,23 @@
 A man walks the dog every day. The dog will prepare $n\ge3$ cards beforehand,
 each containing a direction and a positive distance.
 They start from home and repeat the following process $n$ times:
-
-\begin{enumerate}
-    \item choose a card randomly;
-    \item turn to the direction given on the card;
-    \item walk the distance given on the card in a straight line;
-    \item throw the card away.
-\end{enumerate}
+(1) choose a random card; (2) walk the given distance in the given direction; (3) throw the card away.
 
 After these $n$ rounds, they shall be exactly back home. The dog wins a treat
 if they visited home exactly twice and any other place at most once.
-
-Now, help the dog to choose $n$ cards that maximize the probability
+Now, help the dog to find $n$ cards that maximize the probability
 of winning the treat in a walk.
 
 \begin{remark}
-    As one might have seen, this problem differs from Pearson’s one in that
-    it is not inherently probabilistic. We will be using permutations
-    instead to formally define the problem in the next section.
-    It is later conjectured that the maximum probability required is exactly
-    $2/(n-1)$, despite the lack of a general solution.
+    This maximum probability is later conjectured to equal
+    $2/(n-1)$, despite the lack of a general solution to the problem.
 \end{remark}
 
 \section{Definitions}
 
-Let us take a look at the cards first. The cards the dog prepares should represent
-a sequence of nonzero vectors that sum to zero. We may then define
+We now proceed to formally define the problem.
+The cards the dog prepares should represent
+a sequence of nonzero vectors that sum to zero.
 
 \begin{definition}
     A \emph{step vector} is a nonzero vector in $\mathbb{R}^2$.
@@ -74,19 +63,19 @@ a sequence of nonzero vectors that sum to zero. We may then define
     we say that $S$ is \emph{zero-sum} iff $\sum_{i=1}^{n}s_i=(0,0)$.
 \end{definition}
 
-Then in order to study the points the pair visits in a walk, we shall introduce
-polygonal paths:
+To study the points the pair visits in a walk,
+we shall introduce polygonal paths.
 
 \begin{definition}
-    A \emph{polygonal path} $P$ is a finite sequence $(p_0,p_1,\dots,p_n)$
+    A \emph{polygonal path} is a finite sequence $(p_0,p_1,\dots,p_n)$
     of points called its \emph{vertices}; the line segments
     $\overline{p_0p_1},\overline{p_1p_2},\dots,\overline{p_{n-1}p_n}$
     are called its \emph{edges}.
 \end{definition}
 
 The winning conditions for the dog naturally translate to whether the polygonal
-path formed in a walk does not ``intersect itself'', or in other words whether
-the path is simple.
+path formed in a walk does not ``intersect itself'',
+or, more precisely, whether the path is simple.
 
 \begin{definition}
     A polygonal path $(p_0,p_1,\dots,p_n)$ is \emph{simple}
@@ -104,7 +93,7 @@ the path is simple.
 Geometrically, a simple path is one in which only consecutive
 edges intersect and only at their endpoints; it may also
 be \emph{closed} as specially dealt with in the second case above.
-Then, we define a way to create a path from a step sequence:
+Next, we define a way to create a path from a step sequence.
 
 \begin{definition}
     Let $S:=(s_1,s_2,\dots,s_n)$ be a step sequence. The \emph{walk} of $S$
@@ -112,7 +101,7 @@ Then, we define a way to create a path from a step sequence:
     where $p_0=(0,0)$ and $p_i=p_{i-1}+s_i$ for $1\le i\le n$.
 \end{definition}
 
-Finally, we define the value we are maximizing and then the problem:
+Finally, we define the value we are maximizing and then the problem.
 
 \begin{definition}
     The \emph{simplicity} of a step sequence $S$
@@ -135,26 +124,24 @@ Finally, we define the value we are maximizing and then the problem:
 \end{problem}
 
 This could be viewed as a combinatorial optimization problem,
-because without loss of generality we might restrict step vectors
-to those in $\mathbb{Z}^2$ with magnitudes less than some $f(n)$,
+because w.l.o.g. we might restrict step vectors
+to those in $\mathbb{Z}^2$ of magnitude less than some $f(n)$,
 hence a finite set of feasible solutions. However, this problem is
 quite peculiar in that
 (a) each instance is only a single natural number,
 (b) the set of feasible solutions is not readily restricted to be finite,
-and (c) the value of a feasible solution is not easily computed
-even for moderately large $n$.
+and (c) the value of a feasible solution cannot even be computed
+in reasonable time for $n$ moderately large.
 
 Despite all these peculiarities, the solutions to the problem seem
-to have such a nice property that their values are in
-a simple closed form (see Conjecture \ref{con:value_formula}).
-One would naturally think that a clever algorithm ought to be found,
-if only one that runs in linear time.
+to have the nice property that their values can be expressed
+in a simple closed form (see Conjecture \ref{con:value_formula}).
+I thus claim that there is a polynomial-time algorithm for the problem,
+which I invite the reader to prove or disprove.
 
 \section{Preliminary Results}
 
-Let us fix $n\ge3$. We first present a proposition which
-implies that it is always possible for the dog to win.
-
+Let us fix $n\ge3$. We first show that it is always possible for the dog to win.
 
 \begin{proposition}
     Let $S$ be a zero-sum $n$-step sequence. If the step vectors in $S$ are not all collinear,
@@ -175,17 +162,18 @@ implies that it is always possible for the dog to win.
     for all $1\le i<n$ and that $\sum_{i=1}^n\alpha_i=2\pi$.
     Let $P$ be the walk of $S'$, a polygon of total absolute curvature $2\pi$.
     By Fenchel's theorem (generalized to any closed curve by Milnor
-    \cite[Theorem 3.4]{milnor}), we know that $P$ is convex.
-    A convex polygon that does not lie on a line is simple \cite{ye}.
+    \cite[Theorem 3.4]{milnor}), we know that $P$ is convex. Since $P$
+    does not lie on a line, it follows from \cite[Theorem 2.2]{ye}
+    that $P$ is simple.
 \end{proof}
 
 By computer simulation on Problem \ref{prob:rwd}, we observe that the maximum
-simplicity on record follows a very simple formula, hence the following conjecture.
+simplicities on record follow a very simple formula, hence the following conjecture.
 
 \begin{conjecture}
     \label{con:value_formula}
     The maximum simplicity of a zero-sum $n$-step sequence
-    is exactly $2\cdot n!/(n-1)$.
+    equals \[2\cdot n!/(n-1).\]
 \end{conjecture}
 
 \begin{thebibliography}{9}
@@ -203,7 +191,7 @@ simplicity on record follows a very simple formula, hence the following conjectu
 
     \bibitem{ye}
     S. Ye,
-    \emph{Nonlinear convex closed curves are simple},
+    \emph{On the simpleness of convex closed curves},
     preprint.
 
 \end{thebibliography}
