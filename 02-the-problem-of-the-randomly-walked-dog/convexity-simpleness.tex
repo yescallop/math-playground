@@ -17,19 +17,19 @@
 \newcommand{\lring}[1]{\accentset{\circ}{#1}}
 \newcommand{\ltilde}[1]{\accentset{\sim}{#1}}
 
-\title{On the simpleness of convex closed curves}
+\title{A convex closed curve is simple iff it does not lie on a line}
 \author{Scallop Ye}
 
 \begin{document}
 
 \begin{abstract}
-    A convex curve is a plane curve whose intersection with any
+    A convex curve is a plane curve whose intersection with a
     line is either a set of at most two points or a line segment.
     With analytical definitions of convexity and simpleness,
     we show that a convex closed curve is simple
     if and only if it does not lie on a line.
     We note that the same result still holds when
-    geometrical definitions are used instead.
+    topological definitions are used instead.
 \end{abstract}
 
 \maketitle
@@ -40,20 +40,16 @@ We first follow Milnor \cite{milnor} to
 define the concepts in a rigorous manner.
 
 \begin{definition}[Closed curves]
-    A \emph{closed curve} in Euclidean $n$-space $\mathbb{E}^n$
+    A \emph{closed curve} in $\mathbb{R}^n$
     is a nonconstant continuous periodic function
     $\gamma:\mathbb{R}\to\mathbb{R}^n$. We say that a closed curve
-    is \emph{planar} iff its image lies on a line or in a plane.
+    is \emph{planar} iff its image lies in a plane or on a line.
 \end{definition}
 
-Here we do not restrict a closed curve to be light\footnote{
-    A continuous function $f:S_1\to S_2$ is called \emph{light}
-    iff $f^{-1}(y)$ is totally disconnected for each $y\in S_2$
-    (see \cite[Definition 13.1]{nadler}). A closed curve
-    is light iff it is not constant on any interval.
-}, considering that every closed curve may be
-reparameterized to be light, as we will see in Section
-\ref{sec:geometrical_proof}.
+Here we do not restrict a closed curve to be not constant on any interval,
+considering that every closed curve may be
+reparameterized to be so, as we will see in Section
+\ref{sec:conceivable_connection}.
 
 One can show that a closed curve has a least positive period.
 For convenience we redefine the notion of period for closed curves
@@ -136,7 +132,7 @@ implies planarity and is preserved under a bijective affine map
 (thus consistent across all dimensions).
 
 \begin{definition}[Convexity]
-    Let $\gamma$ be a closed curve in $\mathbb{E}^n$.
+    Let $\gamma$ be a closed curve in $\mathbb{R}^n$.
     We say that $\gamma$ is \emph{convex} iff
     for every hyperplane $H\subset\mathbb{R}^n$,
     the inverse image $\lring{\gamma}^{-1}(H)$ either
@@ -146,7 +142,7 @@ implies planarity and is preserved under a bijective affine map
 
 \begin{proposition}
     \label{pro:convex_equiv}
-    A closed curve $\gamma$ in $\mathbb{E}^n$ is convex
+    A closed curve $\gamma$ in $\mathbb{R}^n$ is convex
     iff for every $u\in\mathbb{S}^{n-1}$ and $y\in\mathbb{R}$,
     there exists a period $P$ of $\gamma$ such that
     the set $\{t\in P:u\cdot\gamma(t)=y\}$ either
@@ -199,7 +195,7 @@ implies planarity and is preserved under a bijective affine map
 \end{proposition}
 
 \begin{proof}
-    Let $\gamma$ be a closed curve in $\mathbb{E}^n$ ($n\ge 3$) which
+    Let $\gamma$ be a closed curve in $\mathbb{R}^n$ ($n\ge 3$) which
     is not planar, and let $P$ be any period of $\gamma$.
     Then there exists $c_1<c_2<c_3<c_4\in P$ such that the points
     $p_1:=\gamma(c_1),p_2:=\gamma(c_2),
@@ -219,8 +215,8 @@ implies planarity and is preserved under a bijective affine map
 \begin{proposition}
     \label{pro:convex_preserved}
     Let $1\le n\le m$ be integers, let $\gamma$ be a closed curve
-    in $\mathbb{E}^n$ of image $C$, and let $\gamma'$ be a closed curve
-    in $\mathbb{E}^m$ of image $C'$ such that $C'\subset F$
+    in $\mathbb{R}^n$ of image $C$, and let $\gamma'$ be a closed curve
+    in $\mathbb{R}^m$ of image $C'$ such that $C'\subset F$
     for some $n$-flat $F\subset\mathbb{R}^m$.
     Suppose that there exists a bijective affine map
     $f:\mathbb{R}^n\to F$ such that $\gamma'=f\circ\gamma$.
@@ -252,7 +248,7 @@ of \cite[Lemma 3.3]{milnor} in the hope that
 our definitions are equivalent to Milnor's.
 
 \begin{definition}
-    Let $\gamma$ be a closed curve in $\mathbb{E}^n$,
+    Let $\gamma$ be a closed curve in $\mathbb{R}^n$,
     let $u\in\mathbb{S}^{n-1}$,
     and let $P$ be any period of $\gamma$.
     Define $\mu(\gamma,u)$ to be the cardinality of the set
@@ -262,7 +258,7 @@ our definitions are equivalent to Milnor's.
 \end{definition}
 
 \begin{proposition}
-    Let $\gamma$ be a closed curve in $\mathbb{E}^n$.
+    Let $\gamma$ be a closed curve in $\mathbb{R}^n$.
     If $\gamma$ is convex, then for every $u\in\mathbb{S}^{n-1}$
     either $\mu(\gamma,u)=1$ or $\mu(\gamma,u)=\infty$.
 \end{proposition}
@@ -309,7 +305,7 @@ be handled in Milnor's proof and does not seem trivial otherwise.
 I think, however, that the lemma is true but still needs
 an analytical proof for the sake of completeness.
 
-\section{Analytical Proof}
+\section{Analytical Result}
 
 Now that we have checked the equivalence of definitions,
 we shall first present a lemma and then our main theorem.
@@ -338,14 +334,13 @@ as a convex closed curve is planar.
 
 \begin{theorem}
     \label{thm:main}
-    A convex closed curve is simple iff it does not lie on a line.
+    A convex closed curve is simple iff its image does not lie on a line.
 \end{theorem}
 
 \begin{proof}
-    The image of a simple closed curve is homeomorphic to
-    $\mathbb{S}^1$ and thus cannot be one-dimensional.
-    Let $\gamma$ be a convex closed curve in $\mathbb{E}^2$
-    which is not simple and does not lie on a line.
+    A subset of a line cannot be homeomorphic to $\mathbb{S}^1$.
+    Let $\gamma$ be a convex closed curve in $\mathbb{R}^2$
+    which is not simple and whose image does not lie on a line.
     Let $X:=[x_1,x_1+p)$ be a period of $\gamma$ such that
     $\gamma(x_1)=\gamma(x_1')$ for some $x_1'\in(x_1,x_1+p)$.
     Then there exists $x_2,x_3\in(x_1,x_1')\cup(x_1',x_1+p)$
@@ -362,17 +357,42 @@ as a convex closed curve is planar.
         \ne u\cdot\gamma(c_2)$, a contradiction to convexity.
 \end{proof}
 
-\section{Geometrical Proof}
-\label{sec:geometrical_proof}
+\section{Topological Result}
+
+The following theorem is the topological analogue to Theorem \ref{thm:main}.
+
+\begin{theorem}
+    \label{thm:main_topo}
+    The boundary $C$ of a bounded convex set in $\mathbb{R}^2$ is
+    homeomorphic to $\mathbb{S}^1$ iff $C$ does not lie on a line.
+\end{theorem}
+
+\begin{proof}
+    A subset of a line cannot be homeomorphic to $\mathbb{S}^1$.
+    The remaining claim follows from \cite[Proposition 28 and Theorem 32]{lrs}.
+\end{proof}
+
+\section{Conceivable Connection Between the Results}
+\label{sec:conceivable_connection}
+
+It is conceivable that there is a connection between Theorems
+\ref{thm:main} and \ref{thm:main_topo}, which we now attempt to establish.
 
 \begin{definition}[Parameterizations]
-    Let $\gamma$ be a closed curve in $\mathbb{E}^n$,
+    Let $\gamma$ be a closed curve in $\mathbb{R}^n$,
     and let $C\subset\mathbb{R}^n$.
     We say that $\gamma$ is a \emph{parameterization}
     of $C$ iff the image of $\gamma$ is $C$.
     Two closed curves are said to be
     \emph{reparameterizations} of each other
     iff their images equal.
+\end{definition}
+
+\begin{definition}[Lightness]
+    A continuous function $f:S_1\to S_2$ is called \emph{light}
+    iff $f^{-1}(y)$ is totally disconnected for each $y\in S_2$
+    (see \cite[Definition 13.1]{nadler}). A closed curve
+    is light iff it is not constant on any interval.
 \end{definition}
 
 \begin{proposition}
@@ -384,35 +404,6 @@ as a convex closed curve is planar.
     The claim follows from \cite[Corollary 13.4]{nadler}
     by viewing maps $f:\mathbb{S}^1\to\mathbb{R}^n$
     as maps $f:[0,1]\to\mathbb{R}^n$ with $f(0)=f(1)$.
-\end{proof}
-
-\begin{definition}[Simple sets]
-    Let $C\subset\mathbb{R}^n$.
-    We say that $C$ is \emph{simple}
-    iff $C$ is homeomorphic to
-    the unit circle $\mathbb{S}^1$.
-\end{definition}
-
-\begin{proposition}
-    \label{pro:simple_par}
-    A simple subset of $\mathbb{R}^n$ has
-    a simple parameterization.
-\end{proposition}
-
-\begin{proof}
-    Let $C$ be a simple subset of $\mathbb{R}^n$.
-    Then there exists a continuous injection
-    $f:\mathbb{S}^1\to\mathbb{R}^n$ of image $C$.
-    Let $g:\mathbb{R}\to\mathbb{S}^1$ be the function
-    $g(t):=(\cos t,\sin t)$. We know that $g$ is continuous
-    on $\mathbb{R}$ and periodic with period $2\pi$, and that
-    the restriction $g|_{[0,2\pi)}$ is injective.
-    Let $\gamma:\mathbb{R}\to\mathbb{R}^n$ be the function
-    $f\circ g$. Then $\gamma$ is continuous
-    on $\mathbb{R}$ and periodic with period $2\pi$, and the
-    restriction $\gamma|_{[0,2\pi)}$ is injective.
-    It follows from Proposition \ref{pro:simple_suf_cond}
-    that $\gamma$ is a simple closed curve of image $C$.
 \end{proof}
 
 \begin{definition}[Weakly convex sets]
@@ -447,9 +438,9 @@ as a convex closed curve is planar.
 
 Being irreducible means that the curve does not contain
 ``redundant loops'' which do not contribute to its image
-and can thus be removed. We now proceed to establish
-that every closed curve may be reparameterized to be
-irreducible. % , laying the groundwork for our main conjecture.
+and can thus be removed. We now show that every closed curve
+may be reparameterized to be irreducible.
+% , laying the groundwork for our main conjecture.
 
 \begin{lemma}
     \label{lem:irr_exists}
@@ -457,103 +448,117 @@ irreducible. % , laying the groundwork for our main conjecture.
 \end{lemma}
 
 \begin{proof}
-    See \url{https://math.stackexchange.com/q/4792008}.
+    See \url{https://math.stackexchange.com/q/4792008} for the moment.
 \end{proof}
+
+We make two conjectures that might be of use.
 
 \begin{conjecture}
     \label{con:irr_linear_convex}
-    An irreducible closed curve that lies on a line is convex.
+    An irreducible closed curve whose image lies on a line is convex.
 \end{conjecture}
 
 % \begin{proof}[Sketch of proof]
-%     Let $\gamma$ be a closed curve in $\mathbb{E}^1$ which is
+%     Let $\gamma$ be a closed curve in $\mathbb{R}^1$ which is
 %     not convex. By Proposition \ref{pro:convex_preserved},
 %     it suffices to show that $\gamma$ is not irreducible.
 % \end{proof}
 
 \begin{conjecture}
     \label{con:irr_simple}
-    An irreducible closed curve of simple image is simple.
+    An irreducible closed curve whose image is homeomorphic to
+    $\mathbb{S}^1$ is simple.
 \end{conjecture}
 
-We note that the above results are, in fact,
-not used in the proof of the following theorem, which is the
-geometrical analogue to Theorem \ref{thm:main}. It is, however,
-conceivable that there is a connection between Theorems
-\ref{thm:main} and \ref{thm:main_geo} by the irreducibility
-defined above.
+It remains to be seen whether these results and conjectures may
+connect Theorem \ref{thm:main} with Theorem \ref{thm:main_topo}.
+See also the following section for a failed attempt.
 
-\begin{theorem}
-    \label{thm:main_geo}
-    The boundary $C$ of a bounded convex set in $\mathbb{R}^2$
-    is simple iff $C$ is not a line segment.
-\end{theorem}
+\section{Failed Attempt to Find a Connection}
+
+\begin{proposition}
+    \label{pro:simple_par}
+    Suppose that $C\subset\mathbb{R}^n$ is a set
+    homeomorphic to $\mathbb{S}^1$. Then
+    $C$ is the image of a simple closed curve.
+\end{proposition}
 
 \begin{proof}
-    The claim follows from \cite[Proposition 28 and Theorem 32]{lrs}.
+    Since $C$ is homeomorphic to $\mathbb{S}^1$,
+    there exists a continuous injection
+    $f:\mathbb{S}^1\to\mathbb{R}^n$ of image $C$.
+    Let $g:\mathbb{R}\to\mathbb{S}^1$ be the function
+    $g(t):=(\cos t,\sin t)$. We know that $g$ is continuous
+    on $\mathbb{R}$ and periodic with period $2\pi$, and that
+    the restriction $g|_{[0,2\pi)}$ is injective.
+    Let $\gamma:\mathbb{R}\to\mathbb{R}^n$ be the function
+    $f\circ g$. Then $\gamma$ is continuous
+    on $\mathbb{R}$ and periodic with period $2\pi$, and the
+    restriction $\gamma|_{[0,2\pi)}$ is injective.
+    It follows from Proposition \ref{pro:simple_suf_cond}
+    that $\gamma$ is a simple closed curve of image $C$.
 \end{proof}
 
-% We then present three correlated conjectures, the last one
-% being our main conjecture, the geometrical analogue to
-% our main theorem.
+We then present three conjectures which are \emph{equally false},
+with notable counterexamples being space-filling curves.
 
-% \begin{conjecture}
-%     \label{con:irr_convex}
-%     An irreducible closed curve of weakly convex image is convex.
-% \end{conjecture}
+\begin{conjecture}
+    \label{con:irr_convex}
+    An irreducible closed curve of weakly convex image is convex.
+\end{conjecture}
 
-% \begin{proof}[Proof that
-%         $\ref{con:irr_linear_convex}
-%             \land\ref{con:irr_simple}
-%             \land\ref{con:main}
-%             \implies\ref{con:irr_convex}$]
-%     \sloppy
-%     Let $\gamma$ be an irreducible closed curve of weakly convex
-%     image $C$. If $C$ is a subset of a line, then $\gamma$
-%     is convex by Conjecture \ref{con:irr_linear_convex}.
-%     If $C$ is not a subset of a line,
-%     then we have $C$ simple by Conjecture \ref{con:main},
-%     $\gamma$ simple by Conjecture \ref{con:irr_simple},
-%     and thus $\gamma$ convex by Proposition \ref{pro:simple_convex}.
-% \end{proof}
+\begin{proof}[Proof that
+        $\ref{con:irr_linear_convex}
+            \land\ref{con:irr_simple}
+            \land\ref{con:main}
+            \implies\ref{con:irr_convex}$]
+    \sloppy
+    Let $\gamma$ be an irreducible closed curve of weakly convex
+    image $C$. If $C$ lies on a line, then $\gamma$
+    is convex by Conjecture \ref{con:irr_linear_convex}.
+    If $C$ does not lie on a line,
+    then we have $C$ homeomorphic to $\mathbb{S}^1$ by Conjecture \ref{con:main},
+    $\gamma$ simple by Conjecture \ref{con:irr_simple},
+    and thus $\gamma$ convex by Proposition \ref{pro:simple_convex}.
+\end{proof}
 
-% \begin{conjecture}
-%     \label{con:convex}
-%     Let $C$ be the image of a closed curve. If $C$ is weakly convex,
-%     then $C$ has a convex parameterization.
-% \end{conjecture}
+\begin{conjecture}
+    \label{con:convex}
+    Let $C$ be the image of a closed curve. If $C$ is weakly convex,
+    then $C$ has a convex parameterization.
+\end{conjecture}
 
-% \begin{proof}[Proof that $\ref{con:irr_convex}
-%             \implies\ref{con:convex}$]
-%     By Lemma \ref{lem:irr_exists} there exists an irreducible
-%     parameterization of $C$,
-%     which is convex by Conjecture \ref{con:irr_convex}.
-% \end{proof}
+\begin{proof}[Proof that $\ref{con:irr_convex}
+            \implies\ref{con:convex}$]
+    By Lemma \ref{lem:irr_exists} there exists an irreducible
+    parameterization of $C$,
+    which is convex by Conjecture \ref{con:irr_convex}.
+\end{proof}
 
-% \begin{proof}[Proof that $\ref{con:main}\implies\ref{con:convex}$]
-%     If $C$ is not simple, then by Conjecture
-%     \ref{con:main} we know that $C$ is a subset of a line,
-%     which certainly is a line segment and has a convex parameterization.
-%     If $C$ is simple, then by Proposition \ref{pro:simple_par}
-%     there exists a simple parameterization of $C$,
-%     which is convex by Proposition \ref{pro:simple_convex}.
-% \end{proof}
+\begin{proof}[Proof that $\ref{con:main}\implies\ref{con:convex}$]
+    If $C$ is not homeomorphic to $\mathbb{S}^1$, then by Conjecture
+    \ref{con:main} we know that $C$ lies on a line,
+    which certainly is a line segment and has a convex parameterization.
+    If $C$ is homeomorphic to $\mathbb{S}^1$, then by Proposition \ref{pro:simple_par}
+    there exists a simple parameterization of $C$,
+    which is convex by Proposition \ref{pro:simple_convex}.
+\end{proof}
 
-% \begin{conjecture}
-%     \label{con:main}
-%     Let $C$ be the image of a closed curve.
-%     Suppose that $C$ is weakly convex.
-%     Then $C$ is simple iff $C$ is not a subset of a line.
-% \end{conjecture}
+\begin{conjecture}
+    \label{con:main}
+    Let $C$ be the image of a closed curve.
+    Suppose that $C$ is weakly convex. Then $C$ is homeomorphic
+    to $\mathbb{S}^1$ iff $C$ does not lie on a line.
+\end{conjecture}
 
-% \begin{proof}[Proof that $\ref{con:convex}\implies\ref{con:main}$]
-%     Clearly, a subset of a line cannot be simple.
-%     Suppose that $C$ is not a subset of a line. By Conjecture
-%     \ref{con:convex} there exists a convex parameterization
-%     $\gamma$ of $C$. Then we have $\gamma$ simple by
-%     Theorem \ref{thm:main}, and thus $C$ simple by
-%     Proposition \ref{pro:simple_equiv}.
-% \end{proof}
+\begin{proof}[Proof that $\ref{con:convex}\implies\ref{con:main}$]
+    A subset of a line cannot be homeomorphic to $\mathbb{S}^1$.
+    Suppose that $C$ does not lie on a line. By Conjecture
+    \ref{con:convex} there exists a convex parameterization
+    $\gamma$ of $C$. Then we have $\gamma$ simple by Theorem
+    \ref{thm:main}, and thus $C$ homeomorphic to $\mathbb{S}^1$ by
+    Proposition \ref{pro:simple_equiv}.
+\end{proof}
 
 \begin{thebibliography}{9}
 
