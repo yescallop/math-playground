@@ -1,6 +1,7 @@
 \documentclass{amsart}
-\usepackage{accents,amsmath,amssymb,amsthm,xeCJK}
+\usepackage{accents,amsmath,amssymb,amsthm,url,xeCJK}
 \setCJKmainfont{SimHei}
+\setCJKmonofont{SimHei}
 
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{lemma}[proposition]{Lemma}
@@ -22,12 +23,12 @@
 \begin{document}
 
 \begin{abstract}
-    A convex curve is a plane curve whose intersection with a
+    A convex curve is a plane curve whose intersection with any
     line is either a set of at most two points or a line segment.
     With analytical definitions of convexity and simpleness,
     we show that a convex closed curve is simple
     if and only if it does not lie on a line.
-    We conjecture that the same result still holds when
+    We note that the same result still holds when
     geometrical definitions are used instead.
 \end{abstract}
 
@@ -52,7 +53,7 @@ Here we do not restrict a closed curve to be light\footnote{
     is light iff it is not constant on any interval.
 }, considering that every closed curve may be
 reparameterized to be light, as we will see in Section
-\ref{sec:geometrical_consideration}.
+\ref{sec:geometrical_proof}.
 
 One can show that a closed curve has a least positive period.
 For convenience we redefine the notion of period for closed curves
@@ -154,8 +155,8 @@ implies planarity and is preserved under a bijective affine map
 
 \begin{proof}
     Suppose that there exists a hyperplane $H\subset\mathbb{R}^n$
-    such that $\lring{\gamma}^{-1}(H)$ is neither an arc
-    nor $\mathbb{S}^1$, and if it is finite, has cardinality $>2$.
+    such that $\lring{\gamma}^{-1}(H)$ is neither $\mathbb{S}^1$
+    nor an arc, and if it is finite, has cardinality $>2$.
     Then we can find a normal vector $u\in\mathbb{S}^{n-1}$ and an
     offset $y\in\mathbb{R}$ such that
     $H=\{x\in\mathbb{R}^n:u\cdot x=y\}$.
@@ -178,8 +179,8 @@ implies planarity and is preserved under a bijective affine map
     the set $T:=\{t\in P:u\cdot\gamma(t)=y\}$ is not an interval,
     and if it is finite, has cardinality $>2$.
     Let $H$ be the hyperplane $H:=\{x\in\mathbb{R}^n:u\cdot x=y\}$.
-    Then $\lring{\gamma}^{-1}(H)$ is neither an arc nor
-    $\mathbb{S}^1$, and if it is finite, has cardinality $>2$,
+    Then $\lring{\gamma}^{-1}(H)$ is neither $\mathbb{S}^1$
+    nor an arc, and if it is finite, has cardinality $>2$,
     since otherwise \[T=\gamma^{-1}(H)\cap P
         =\ltilde{\gamma}^{-1}(\lring{\gamma}^{-1}(H))\cap P\]
     would either have cardinality $\le2$ for any period $P$ of
@@ -229,16 +230,16 @@ implies planarity and is preserved under a bijective affine map
 \begin{proof}[Sketch of proof]
     Suppose that $\gamma$ is not convex.
     Then there exists a hyperplane $H\subset\mathbb{R}^n$
-    such that $\lring{\gamma}^{-1}(H)$ is neither an arc
-    nor $\mathbb{S}^1$, and if it is finite, has cardinality $>2$.
+    such that $\lring{\gamma}^{-1}(H)$ is neither $\mathbb{S}^1$
+    nor an arc, and if it is finite, has cardinality $>2$.
     We can find a hyperplane $H'\subset\mathbb{R}^m$ such that
     $F\cap H'=f(H)$ (why?). It only remains to show that
     $\lring{\gamma}'^{-1}(H')=\lring{\gamma}^{-1}(H)$.
 
     Now suppose that $\gamma'$ is not convex.
     Then there exists a hyperplane $H'\subset\mathbb{R}^m$
-    such that $\lring{\gamma}'^{-1}(H')$ is neither an arc
-    nor $\mathbb{S}^1$, and if it is finite, has cardinality $>2$.
+    such that $\lring{\gamma}'^{-1}(H')$ is neither $\mathbb{S}^1$
+    nor an arc, and if it is finite, has cardinality $>2$.
     The intersection $F\cap H'$ must be an $(n-1)$-flat
     in $\mathbb{R}^m$ (why?), so the inverse image
     $H:=f^{-1}(H')$ is a hyperplane in $\mathbb{R}^n$.
@@ -361,8 +362,8 @@ as a convex closed curve is planar.
         \ne u\cdot\gamma(c_2)$, a contradiction to convexity.
 \end{proof}
 
-\section{Geometrical Consideration}
-\label{sec:geometrical_consideration}
+\section{Geometrical Proof}
+\label{sec:geometrical_proof}
 
 \begin{definition}[Parameterizations]
     Let $\gamma$ be a closed curve in $\mathbb{E}^n$,
@@ -448,7 +449,7 @@ Being irreducible means that the curve does not contain
 ``redundant loops'' which do not contribute to its image
 and can thus be removed. We now proceed to establish
 that every closed curve may be reparameterized to be
-irreducible, laying the groundwork for our main conjecture.
+irreducible. % , laying the groundwork for our main conjecture.
 
 \begin{lemma}
     \label{lem:irr_exists}
@@ -456,7 +457,7 @@ irreducible, laying the groundwork for our main conjecture.
 \end{lemma}
 
 \begin{proof}
-    To be written.
+    See \url{https://math.stackexchange.com/q/4792008}.
 \end{proof}
 
 \begin{conjecture}
@@ -464,80 +465,103 @@ irreducible, laying the groundwork for our main conjecture.
     An irreducible closed curve that lies on a line is convex.
 \end{conjecture}
 
-\begin{proof}[Sketch of proof]
-    Let $\gamma$ be a closed curve in $\mathbb{E}^1$ which is
-    not convex. By Proposition \ref{pro:convex_preserved},
-    it suffices to show that $\gamma$ is not irreducible.
-\end{proof}
+% \begin{proof}[Sketch of proof]
+%     Let $\gamma$ be a closed curve in $\mathbb{E}^1$ which is
+%     not convex. By Proposition \ref{pro:convex_preserved},
+%     it suffices to show that $\gamma$ is not irreducible.
+% \end{proof}
 
 \begin{conjecture}
     \label{con:irr_simple}
     An irreducible closed curve of simple image is simple.
 \end{conjecture}
 
-We then present three correlated conjectures, the last one
-being our main conjecture, the geometrical analogue to
-our main theorem.
+We note that the above results are, in fact,
+not used in the proof of the following theorem, which is the
+geometrical analogue to Theorem \ref{thm:main}. It is, however,
+conceivable that there is a connection between Theorems
+\ref{thm:main} and \ref{thm:main_geo} by the irreducibility
+defined above.
 
-\begin{conjecture}
-    \label{con:irr_convex}
-    An irreducible closed curve of weakly convex image is convex.
-\end{conjecture}
+\begin{theorem}
+    \label{thm:main_geo}
+    The boundary $C$ of a bounded convex set in $\mathbb{R}^2$
+    is simple iff $C$ is not a line segment.
+\end{theorem}
 
-\begin{proof}[Proof that
-        $\ref{con:irr_linear_convex}
-            \land\ref{con:irr_simple}
-            \land\ref{con:main}
-            \implies\ref{con:irr_convex}$]
-    \sloppy
-    Let $\gamma$ be an irreducible closed curve of weakly convex
-    image $C$. If $C$ is a subset of a line, then $\gamma$
-    is convex by Conjecture \ref{con:irr_linear_convex}.
-    If $C$ is not a subset of a line,
-    then we have $C$ simple by Conjecture \ref{con:main},
-    $\gamma$ simple by Conjecture \ref{con:irr_simple},
-    and thus $\gamma$ convex by Proposition \ref{pro:simple_convex}.
+\begin{proof}
+    The claim follows from \cite[Proposition 28 and Theorem 32]{lrs}.
 \end{proof}
 
-\begin{conjecture}
-    \label{con:convex}
-    Let $C$ be the image of a closed curve. If $C$ is weakly convex,
-    then $C$ has a convex parameterization.
-\end{conjecture}
+% We then present three correlated conjectures, the last one
+% being our main conjecture, the geometrical analogue to
+% our main theorem.
 
-\begin{proof}[Proof that $\ref{con:irr_convex}
-            \implies\ref{con:convex}$]
-    By Lemma \ref{lem:irr_exists} there exists an irreducible
-    parameterization of $C$,
-    which is convex by Conjecture \ref{con:irr_convex}.
-\end{proof}
+% \begin{conjecture}
+%     \label{con:irr_convex}
+%     An irreducible closed curve of weakly convex image is convex.
+% \end{conjecture}
 
-\begin{proof}[Proof that $\ref{con:main}\implies\ref{con:convex}$]
-    If $C$ is not simple, then by Conjecture
-    \ref{con:main} we know that $C$ is a subset of a line,
-    which certainly is a line segment and has a convex parameterization.
-    If $C$ is simple, then by Proposition \ref{pro:simple_par}
-    there exists a simple parameterization of $C$,
-    which is convex by Proposition \ref{pro:simple_convex}.
-\end{proof}
+% \begin{proof}[Proof that
+%         $\ref{con:irr_linear_convex}
+%             \land\ref{con:irr_simple}
+%             \land\ref{con:main}
+%             \implies\ref{con:irr_convex}$]
+%     \sloppy
+%     Let $\gamma$ be an irreducible closed curve of weakly convex
+%     image $C$. If $C$ is a subset of a line, then $\gamma$
+%     is convex by Conjecture \ref{con:irr_linear_convex}.
+%     If $C$ is not a subset of a line,
+%     then we have $C$ simple by Conjecture \ref{con:main},
+%     $\gamma$ simple by Conjecture \ref{con:irr_simple},
+%     and thus $\gamma$ convex by Proposition \ref{pro:simple_convex}.
+% \end{proof}
 
-\begin{conjecture}
-    \label{con:main}
-    Let $C$ be the image of a closed curve.
-    Suppose that $C$ is weakly convex.
-    Then $C$ is simple iff $C$ is not a subset of a line.
-\end{conjecture}
+% \begin{conjecture}
+%     \label{con:convex}
+%     Let $C$ be the image of a closed curve. If $C$ is weakly convex,
+%     then $C$ has a convex parameterization.
+% \end{conjecture}
 
-\begin{proof}[Proof that $\ref{con:convex}\implies\ref{con:main}$]
-    Clearly, a subset of a line cannot be simple.
-    Suppose that $C$ is not a subset of a line. By Conjecture
-    \ref{con:convex} there exists a convex parameterization
-    $\gamma$ of $C$. Then we have $\gamma$ simple by
-    Theorem \ref{thm:main}, and thus $C$ simple by
-    Proposition \ref{pro:simple_equiv}.
-\end{proof}
+% \begin{proof}[Proof that $\ref{con:irr_convex}
+%             \implies\ref{con:convex}$]
+%     By Lemma \ref{lem:irr_exists} there exists an irreducible
+%     parameterization of $C$,
+%     which is convex by Conjecture \ref{con:irr_convex}.
+% \end{proof}
+
+% \begin{proof}[Proof that $\ref{con:main}\implies\ref{con:convex}$]
+%     If $C$ is not simple, then by Conjecture
+%     \ref{con:main} we know that $C$ is a subset of a line,
+%     which certainly is a line segment and has a convex parameterization.
+%     If $C$ is simple, then by Proposition \ref{pro:simple_par}
+%     there exists a simple parameterization of $C$,
+%     which is convex by Proposition \ref{pro:simple_convex}.
+% \end{proof}
+
+% \begin{conjecture}
+%     \label{con:main}
+%     Let $C$ be the image of a closed curve.
+%     Suppose that $C$ is weakly convex.
+%     Then $C$ is simple iff $C$ is not a subset of a line.
+% \end{conjecture}
+
+% \begin{proof}[Proof that $\ref{con:convex}\implies\ref{con:main}$]
+%     Clearly, a subset of a line cannot be simple.
+%     Suppose that $C$ is not a subset of a line. By Conjecture
+%     \ref{con:convex} there exists a convex parameterization
+%     $\gamma$ of $C$. Then we have $\gamma$ simple by
+%     Theorem \ref{thm:main}, and thus $C$ simple by
+%     Proposition \ref{pro:simple_equiv}.
+% \end{proof}
 
 \begin{thebibliography}{9}
+
+    \bibitem{lrs}
+    L. Latecki, A. Rosenfeld and R. Silverman,
+    \emph{Generalized convexity: $CP3$ and boundaries of convex sets},
+    Pattern Recognit.
+    \textbf{28} (1995), no. 8, 1191--1199.
 
     \bibitem{milnor}
     J. W. Milnor,
