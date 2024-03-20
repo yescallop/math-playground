@@ -46,7 +46,7 @@ define the concepts in a rigorous manner.
     is \emph{planar} iff its image lies in a plane or on a line.
 \end{definition}
 
-Here we do not restrict a closed curve to be not constant on any interval,
+Here we do not restrict a closed curve to be nonconstant on any interval,
 considering that every closed curve may be
 reparameterized to be so, as we will see in Section
 \ref{sec:conceivable_connection}.
@@ -378,11 +378,30 @@ The following theorem is the topological analogue to Theorem \ref{thm:main}.
 It is conceivable that there is a connection between Theorems
 \ref{thm:main} and \ref{thm:main_topo}, which we now attempt to establish.
 
-\begin{definition}[Parameterizations]
-    Let $\gamma$ be a closed curve in $\mathbb{R}^n$,
-    and let $C\subset\mathbb{R}^n$.
-    We say that $\gamma$ is a \emph{parameterization}
-    of $C$ iff the image of $\gamma$ is $C$.
+\begin{proposition}
+    \label{pro:homeomorphic_simple}
+    Suppose that $C\subset\mathbb{R}^n$ is a set
+    homeomorphic to $\mathbb{S}^1$. Then
+    $C$ is the image of a simple closed curve.
+\end{proposition}
+
+\begin{proof}
+    Since $C$ is homeomorphic to $\mathbb{S}^1$,
+    there exists a continuous injection
+    $f:\mathbb{S}^1\to\mathbb{R}^n$ of image $C$.
+    Let $g:\mathbb{R}\to\mathbb{S}^1$ be the function
+    $g(t):=(\cos t,\sin t)$. We know that $g$ is continuous
+    on $\mathbb{R}$ and periodic with period $2\pi$, and that
+    the restriction $g|_{[0,2\pi)}$ is injective.
+    Let $\gamma:\mathbb{R}\to\mathbb{R}^n$ be the function
+    $f\circ g$. Then $\gamma$ is continuous
+    on $\mathbb{R}$ and periodic with period $2\pi$, and the
+    restriction $\gamma|_{[0,2\pi)}$ is injective.
+    It follows from Proposition \ref{pro:simple_suf_cond}
+    that $\gamma$ is a simple closed curve of image $C$.
+\end{proof}
+
+\begin{definition}[Reparameterizations]
     Two closed curves are said to be
     \emph{reparameterizations} of each other
     iff their images equal.
@@ -392,7 +411,7 @@ It is conceivable that there is a connection between Theorems
     A continuous function $f:S_1\to S_2$ is called \emph{light}
     iff $f^{-1}(y)$ is totally disconnected for each $y\in S_2$
     (see \cite[Definition 13.1]{nadler}). A closed curve
-    is light iff it is not constant on any interval.
+    is light iff it is nonconstant on any interval.
 \end{definition}
 
 \begin{proposition}
@@ -476,30 +495,7 @@ See also the following section for a failed attempt.
 
 \section{Failed Attempt to Find a Connection}
 
-\begin{proposition}
-    \label{pro:simple_par}
-    Suppose that $C\subset\mathbb{R}^n$ is a set
-    homeomorphic to $\mathbb{S}^1$. Then
-    $C$ is the image of a simple closed curve.
-\end{proposition}
-
-\begin{proof}
-    Since $C$ is homeomorphic to $\mathbb{S}^1$,
-    there exists a continuous injection
-    $f:\mathbb{S}^1\to\mathbb{R}^n$ of image $C$.
-    Let $g:\mathbb{R}\to\mathbb{S}^1$ be the function
-    $g(t):=(\cos t,\sin t)$. We know that $g$ is continuous
-    on $\mathbb{R}$ and periodic with period $2\pi$, and that
-    the restriction $g|_{[0,2\pi)}$ is injective.
-    Let $\gamma:\mathbb{R}\to\mathbb{R}^n$ be the function
-    $f\circ g$. Then $\gamma$ is continuous
-    on $\mathbb{R}$ and periodic with period $2\pi$, and the
-    restriction $\gamma|_{[0,2\pi)}$ is injective.
-    It follows from Proposition \ref{pro:simple_suf_cond}
-    that $\gamma$ is a simple closed curve of image $C$.
-\end{proof}
-
-We then present three conjectures which are \emph{equally false},
+We present three conjectures which are \emph{equally false},
 with notable counterexamples being space-filling curves.
 
 \begin{conjecture}
@@ -525,22 +521,22 @@ with notable counterexamples being space-filling curves.
 \begin{conjecture}
     \label{con:convex}
     Let $C$ be the image of a closed curve. If $C$ is weakly convex,
-    then $C$ has a convex parameterization.
+    then $C$ is the image of a convex closed curve.
 \end{conjecture}
 
 \begin{proof}[Proof that $\ref{con:irr_convex}
             \implies\ref{con:convex}$]
     By Lemma \ref{lem:irr_exists} there exists an irreducible
-    parameterization of $C$,
+    closed curve of image $C$,
     which is convex by Conjecture \ref{con:irr_convex}.
 \end{proof}
 
 \begin{proof}[Proof that $\ref{con:main}\implies\ref{con:convex}$]
     If $C$ is not homeomorphic to $\mathbb{S}^1$, then by Conjecture
     \ref{con:main} we know that $C$ lies on a line,
-    which certainly is a line segment and has a convex parameterization.
-    If $C$ is homeomorphic to $\mathbb{S}^1$, then by Proposition \ref{pro:simple_par}
-    there exists a simple parameterization of $C$,
+    which certainly is a line segment and is the image of a convex closed curve.
+    If $C$ is homeomorphic to $\mathbb{S}^1$, then by Proposition \ref{pro:homeomorphic_simple}
+    there exists a simple closed curve of image $C$,
     which is convex by Proposition \ref{pro:simple_convex}.
 \end{proof}
 
@@ -554,8 +550,8 @@ with notable counterexamples being space-filling curves.
 \begin{proof}[Proof that $\ref{con:convex}\implies\ref{con:main}$]
     A subset of a line cannot be homeomorphic to $\mathbb{S}^1$.
     Suppose that $C$ does not lie on a line. By Conjecture
-    \ref{con:convex} there exists a convex parameterization
-    $\gamma$ of $C$. Then we have $\gamma$ simple by Theorem
+    \ref{con:convex} there exists a convex closed curve
+    $\gamma$ of image $C$. Then we have $\gamma$ simple by Theorem
     \ref{thm:main}, and thus $C$ homeomorphic to $\mathbb{S}^1$ by
     Proposition \ref{pro:simple_equiv}.
 \end{proof}
